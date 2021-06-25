@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_lovepeople/utils/dot_widget.dart';
+
+import 'components/my_flutter_app_icons.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -31,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   width: 150,
                   height: 150,
-                  child: CircleAvatar(),
+                  child: Image.asset('assets/images/logo_lovepeople.png'),
                 ),
                 Text(
                   "Lovepeople",
@@ -83,30 +86,39 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: "Senha",
-                      hintStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                        fontFamily: "Tahoma",
-                        color: Color(0xFF3101B9),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true),
+                    hintText: "Senha",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontFamily: "Tahoma",
+                      color: Color(0xFF3101B9),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    suffixIcon: Icon(
+                      MyFlutterApp.olhinho_senha_inicio,
+                      color: Color(0xFF3101B9),
+                      size: 50,
+                    ),
+                  ),
+                  obscureText: true,
                 ),
                 Row(
                   children: [
-                    Text("Esqueceu seu login ou senha",
+                    Text("Esqueceu seu login ou senha?",
                         style: TextStyle(
                           fontSize: 15.0,
+                          color: Colors.white,
                         )),
                     TextButton(
                       child: Text("Clique aqui",
                           style: TextStyle(
                             fontSize: 15.0,
+                            color: Color(0xFFFFD600),
                           )),
                       onPressed: () {},
                     ),
@@ -131,24 +143,35 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(color: Colors.white, width: 2)))),
                 ),
-                Divider(
+                SizedBox(
                   height: 100,
-                  color: Colors.white,
                 ),
-                Row(
-                  children: [
-                    Text("Não possui cadastro?",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        )),
-                    TextButton(
-                      child: Text("Clique aqui",
-                          style: TextStyle(
-                            fontSize: 20.0,
-                          )),
-                      onPressed: () {},
+                DotWidget(
+                  dashColor: Colors.white,
+                  dashHeight: 1,
+                  dashWidth: 1,
+                ),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        Text("Não possui cadastro?",
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                            )),
+                        TextButton(
+                          child: Text("Clique aqui",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Color(0xFFFFD600),
+                              )),
+                          onPressed: () {},
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
