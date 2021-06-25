@@ -70,6 +70,17 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
                   topRight: Radius.circular(210),
                 ),
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 250,
+                    height: 150,
+                    child: Image.asset("assets/images/ada.png"),
+                  ),
+                ],
+              ),
             ),
             Container(
               margin: EdgeInsets.only(
