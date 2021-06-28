@@ -170,31 +170,33 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
             SizedBox(
               height: 60,
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.delete_outline_outlined,
-                      size: 100,
+            Center(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.add,
+                        size: 100,
+                      ),
+                      color: Colors.white,
+                      onPressed: () {
+                        print(' hello');
+                      },
                     ),
-                    color: Colors.white,
-                    onPressed: () {
-                      print(' hello');
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.check,
-                      size: 100,
+                    IconButton(
+                      icon: Icon(
+                        Icons.check,
+                        size: 100,
+                      ),
+                      color: Colors.white,
+                      onPressed: () {
+                        print(' hello');
+                      },
                     ),
-                    color: Colors.white,
-                    onPressed: () {
-                      print(' hello');
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
