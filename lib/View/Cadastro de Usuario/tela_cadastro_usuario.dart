@@ -4,8 +4,8 @@
 //* Alterar layout y color texto 'Já possui cadastro? Entrar' - OK
 //* Cambiar icon olho de senha padrón por estilo lovepeople - OK
 //* Cambiar fuente padrón por estilo lovepeople - OK
-//* Validaciones de los campos del formulario - OK
 //* Prueba de navegación entre paginas Navigator - OK
+//* Validaciones de los campos del formulario - OK
 //! Usar expanded? - cuando return de texto de validator, sucede una deformación de layout en los campos
 //! Ver gerenciamiento de estado
 //! Ver providers
@@ -307,21 +307,21 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   }
 
   void cadastrar(context) {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      print(name.text);
-      print(email.text);
-      print(password.text);
-      print(cPassword.text);
-      Navigator.of(context)
-        .push(
-          MaterialPageRoute(
-            builder: (context) => telaSucessoCadastro(),
-          ),
-        )
-      .then((value) {});
-      _formKey.currentState!.reset();
-    }
+    // if (_formKey.currentState!.validate()) { //* - OK
+    //   _formKey.currentState!.save(); //* - OK
+    //   print(name.text);
+    //   print(email.text);
+    //   print(password.text);
+    //   print(cPassword.text);
+    //   Navigator.of(context)
+    //     .push(
+    //       MaterialPageRoute(
+    //         builder: (context) => telaSucessoCadastro(), //* - OK
+    //       ),
+    //     )
+    //   .then((value) {});
+    //   _formKey.currentState!.reset(); //* - OK
+    // }
   }
 
   void jaPossuiCadastro(context) {
@@ -329,36 +329,36 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   }
 }
 
-//* Uso exclusivo para la prueba de navigator
+//* Uso exclusivo para la prueba de navigator //* - OK
 
-class telaSucessoCadastro extends StatelessWidget {
-  const telaSucessoCadastro({Key? key}) : super(key: key);
+// class telaSucessoCadastro extends StatelessWidget {
+//   const telaSucessoCadastro({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFA901F7),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 180),
-              child: Center(
-                child: Text(
-                  'Cadastro Concluído!',
-                  style: GoogleFonts.montserrat(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                    color: Colors.white,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Color(0xFFA901F7),
+//       body: SafeArea(
+//         child: Column(
+//           children: [
+//             Container(
+//               margin: EdgeInsets.only(top: 180),
+//               child: Center(
+//                 child: Text(
+//                   'Cadastro Concluído!',
+//                   style: GoogleFonts.montserrat(
+//                     textStyle: TextStyle(
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                     color: Colors.white,
+//                     fontSize: 25,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
