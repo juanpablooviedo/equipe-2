@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_lovepeople/utils/dot_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'components/login_access.dart';
-import 'components/my_flutter_app_icons.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

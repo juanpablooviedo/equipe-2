@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
-
 import 'my_flutter_app_icons.dart';
 
 class LoginAccess extends StatefulWidget {
@@ -16,10 +15,12 @@ class _LoginAccessState extends State<LoginAccess> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 10),
       child: Form(
         key: _formKey,
         child: Container(
-          padding: EdgeInsets.only(top: 20),
+          padding: EdgeInsets.only(top: 5),
+          margin: EdgeInsets.all(20.0),
           child: Column(children: [
             TextFormField(
                 validator: (value) {
@@ -108,7 +109,9 @@ class _LoginAccessState extends State<LoginAccess> {
                   Container(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {}
+                        },
                         child: Text(
                           "Entrar",
                           style: TextStyle(
@@ -126,7 +129,7 @@ class _LoginAccessState extends State<LoginAccess> {
                                         color: Colors.white, width: 2)))),
                       )),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   DotWidget(
                     dashColor: Colors.white,

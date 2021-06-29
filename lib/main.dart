@@ -1,10 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_lovepeople/View/Login/tela_login.dart';
+import 'View/Login/tela_login.dart';
 
 main() {
-  runApp(MaterialApp(
-    home: LoginPage(),
-    debugShowCheckedModeBanner: false,
-  ));
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LoginPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }

@@ -6,10 +6,10 @@ class DotWidget extends StatelessWidget {
   final Color dashColor;
 
   const DotWidget({
-    this.totalWidth = 321,
+    this.totalWidth = 300,
     this.dashWidth = 11,
-    this.emptyWidth = 6,
-    this.dashHeight = 3,
+    this.emptyWidth = 5,
+    this.dashHeight = 2,
     this.dashColor = Colors.black,
     Key? key,
   }) : super(key: key);
