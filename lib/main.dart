@@ -5,5 +5,6 @@ import 'package:todo_lovepeople/View/Login/tela_login.dart';
 main() {
   runApp(MaterialApp(
     home: LoginPage(),
+    debugShowCheckedModeBanner: false,
   ));
 }
