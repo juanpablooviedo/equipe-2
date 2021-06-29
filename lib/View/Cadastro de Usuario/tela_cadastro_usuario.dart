@@ -1,6 +1,5 @@
 //! Ver gerenciamiento de estado
 //! Ver providers
-
 //! API
 //! git checkout -b feature/juan/tela-cadastro-usuario-api
 //! git commit -m "Iniciando integração com API"
