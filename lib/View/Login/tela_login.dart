@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_lovepeople/utils/dot_widget.dart';
+import 'package:todo_lovepeople/Utils/dot_widget.dart';
 
 import 'components/my_flutter_app_icons.dart';
 

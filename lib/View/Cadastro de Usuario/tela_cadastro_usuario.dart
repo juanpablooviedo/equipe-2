@@ -263,7 +263,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       ),
                     ),
                     onPressed: () {
-                      cadastrar(context);
+                      registerNow(context);
                     },
                   ),
                 ),
@@ -293,7 +293,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                             color: Color(0xFFFFD600),
                           )),
                       onPressed: () {
-                        jaPossuiCadastro(context);
+                        registerOld(context);
                       },
                     ),
                   ],
@@ -306,7 +306,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
     );
   }
 
-  void cadastrar(context) {
+  void registerNow(context) {
     // if (_formKey.currentState!.validate()) { //* - OK
     //   _formKey.currentState!.save(); //* - OK
     //   print(name.text);
@@ -316,7 +316,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
     //   Navigator.of(context)
     //     .push(
     //       MaterialPageRoute(
-    //         builder: (context) => telaSucessoCadastro(), //* - OK
+    //         builder: (context) => Success(), //* - OK
     //       ),
     //     )
     //   .then((value) {});
@@ -324,15 +324,15 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
     // }
   }
 
-  void jaPossuiCadastro(context) {
+  void registerOld(context) {
     // Navigator.of(context).pop();
   }
 }
 
 //* Uso exclusivo para la prueba de navigator //* - OK
 
-// class telaSucessoCadastro extends StatelessWidget {
-//   const telaSucessoCadastro({Key? key}) : super(key: key);
+// class Success extends StatelessWidget {
+//   const Success({Key? key}) : super(key: key);
 
 //   @override
 //   Widget build(BuildContext context) {
