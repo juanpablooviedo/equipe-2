@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class RegisterSuccess extends StatefulWidget {
-  const RegisterSuccess({Key? key, required String home}) : super(key: key);
-
   @override
   _RegisterSuccessState createState() => _RegisterSuccessState();
 }
@@ -47,9 +45,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                          color: Colors.white, 
-                          width: 2),
+                          side: BorderSide(color: Colors.white, width: 2),
                         ),
                       ),
                     ),
