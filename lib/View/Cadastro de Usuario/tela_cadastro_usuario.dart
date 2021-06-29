@@ -23,7 +23,7 @@ class _RegisterUserState extends State<RegisterUser> {
   final cPassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Widget _builNameField() {
+  Widget _buildNameField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 20, 30, 12),
       height: 38,
@@ -76,7 +76,7 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 
-  Widget _builEmailField() {
+  Widget _buildEmailField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
       height: 38,
@@ -128,7 +128,7 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 
-  Widget _builPasswordField() {
+  Widget _buildPasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
       height: 38,
@@ -187,7 +187,7 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 
-  Widget _builCpasswordField() {
+  Widget _buildCpasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
       height: 38,
@@ -285,10 +285,10 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                   ),
                 ),
-                _builNameField(),
-                _builEmailField(),
-                _builPasswordField(),
-                _builCpasswordField(),
+                _buildNameField(),
+                _buildEmailField(),
+                _buildPasswordField(),
+                _buildCpasswordField(),
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
                   child: ElevatedButton(
