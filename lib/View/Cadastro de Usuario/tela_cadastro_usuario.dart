@@ -262,93 +262,95 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFA901F7),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 180),
-                  child: Text(
-                    'Vamos começar!',
-                    style: GoogleFonts.montserrat(
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                      ),
-                      color: Colors.white.withOpacity(1),
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
-                _buildNameField(),
-                _buildEmailField(),
-                _buildPasswordField(),
-                _buildCpasswordField(),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
-                  child: ElevatedButton(
+    return SafeArea( // mantiene el menu superior con el color padrón (en mi caso, negro)
+      child: Scaffold(
+        backgroundColor: Color(0xFFA901F7),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 180),
                     child: Text(
-                      'Cadastrar',
+                      'Vamos começar!',
                       style: GoogleFonts.montserrat(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w500,
                         ),
                         color: Colors.white.withOpacity(1),
-                        fontSize: 20,
+                        fontSize: 25,
                       ),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFF3101B9)),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          side: BorderSide(color: Colors.white, width: 1),
+                  ),
+                  _buildNameField(),
+                  _buildEmailField(),
+                  _buildPasswordField(),
+                  _buildCpasswordField(),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
+                    child: ElevatedButton(
+                      child: Text(
+                        'Cadastrar',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                          color: Colors.white.withOpacity(1),
+                          fontSize: 20,
                         ),
                       ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0xFF3101B9)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(color: Colors.white, width: 1),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        registerNow(context);
+                      },
                     ),
-                    onPressed: () {
-                      registerNow(context);
-                    },
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 100, 0, 15),
-                  child: DotWidget(
-                    dashColor: Colors.white,
-                    totalWidth: 296,
-                    dashHeight: 1,
-                    dashWidth: 3,
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 70, 0, 15), // cambiar valor de T=100, caso elimine SafeArea()
+                    child: DotWidget(
+                      dashColor: Colors.white,
+                      totalWidth: 296,
+                      dashHeight: 1,
+                      dashWidth: 3,
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Já possui cadastro?",
-                        style: TextStyle(
-                          fontFamily: "Tahoma",
-                          fontSize: 16,
-                          color: Colors.white,
-                        )),
-                    TextButton(
-                      child: Text("Entrar",
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Já possui cadastro?",
                           style: TextStyle(
                             fontFamily: "Tahoma",
                             fontSize: 16,
-                            color: Color(0xFFFFD600),
+                            color: Colors.white,
                           )),
-                      onPressed: () {
-                        registerOld(context);
-                      },
-                    ),
-                  ],
-                ),
-              ],
+                      TextButton(
+                        child: Text("Entrar",
+                            style: TextStyle(
+                              fontFamily: "Tahoma",
+                              fontSize: 16,
+                              color: Color(0xFFFFD600),
+                            )),
+                        onPressed: () {
+                          registerOld(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -391,27 +393,29 @@ class _RegisterUserState extends State<RegisterUser> {
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Color(0xFFA901F7),
-//       body: SafeArea(
-//         child: Column(
-//           children: [
-//             Container(
-//               margin: EdgeInsets.only(top: 180),
-//               child: Center(
-//                 child: Text(
-//                   'Cadastro Concluído!',
-//                   style: GoogleFonts.montserrat(
-//                     textStyle: TextStyle(
-//                       fontWeight: FontWeight.w500,
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: Color(0xFFA901F7),
+//         body: SafeArea(
+//           child: Column(
+//             children: [
+//               Container(
+//                 margin: EdgeInsets.only(top: 180),
+//                 child: Center(
+//                   child: Text(
+//                     'Cadastro Concluído!',
+//                     style: GoogleFonts.montserrat(
+//                       textStyle: TextStyle(
+//                         fontWeight: FontWeight.w500,
+//                       ),
+//                       color: Colors.white,
+//                       fontSize: 25,
 //                     ),
-//                     color: Colors.white,
-//                     fontSize: 25,
 //                   ),
 //                 ),
 //               ),
-//             ),
-//           ],
+//             ],
+//           ),
 //         ),
 //       ),
 //     );
