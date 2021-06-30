@@ -1,6 +1,8 @@
 //! Ver gerenciamiento de estado
 //! Ver providers
-//! API
+
+//! API - estudar (aula - documentação - videos)
+//! API - iniciar
 //! git checkout -b feature/juan/tela-cadastro-usuario-api
 //! git commit -m "Iniciando integração com API"
 //! git commit -m "Integração com API finalizado"
@@ -22,6 +24,7 @@ class _RegisterUserState extends State<RegisterUser> {
   final password = TextEditingController();
   final cPassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isHiddenPassword = true;
 
   Widget _buildNameField() {
     return Container(
@@ -54,21 +57,23 @@ class _RegisterUserState extends State<RegisterUser> {
           ),
           controller: name,
           validator: (value) {
-            if (value!.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Container(
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  'O campo Nome é obrigatório!',
-                  style: TextStyle(
-                    fontFamily: "Tahoma",
-                    fontSize: 14,
-                  ),
-                ),
-              )));
-            }
-            return null;
+          if (value!.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Color(0xFF3101B9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+            ),
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'Nome é obrigatório!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "Tahoma",
+                fontSize: 14,
+              ),
+            )));
+          }
+          return null;
           },
           onSaved: (value) {
             name.text = value!;
@@ -106,21 +111,23 @@ class _RegisterUserState extends State<RegisterUser> {
           ),
           controller: email,
           validator: (value) {
-            if (value!.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Container(
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  'O campo de telefone, email ou CPF é obrigatório!',
-                  style: TextStyle(
-                    fontFamily: "Tahoma",
-                    fontSize: 14,
-                  ),
-                ),
-              )));
-            }
-            return null;
+          if (value!.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Color(0xFF3101B9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+            ),
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'Telefone, email ou CPF é obrigatório!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "Tahoma",
+                fontSize: 14,
+              ),
+            )));
+          }
+          return null;
           },
           onSaved: (value) {
             email.text = value!;
@@ -141,6 +148,24 @@ class _RegisterUserState extends State<RegisterUser> {
               borderRadius: BorderRadius.circular(10),
             ),
             hintText: 'Senha',
+            suffixIcon: IconButton(
+              icon: isHiddenPassword == true ?
+              Icon(
+                OlhoLovepeople.olhinho_senha,
+                color: Color(0xFF3101B9),
+                size: 35,
+              ):
+              Icon(
+                OlhoLovepeople.olhinho_senha,
+                color: Colors.grey,
+                size: 35,
+              ),
+              onPressed: (){
+                setState((){
+                  isHiddenPassword = !isHiddenPassword;
+                });
+              }
+            ),
             hintStyle: TextStyle(
               fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
@@ -148,16 +173,10 @@ class _RegisterUserState extends State<RegisterUser> {
               fontSize: 16,
               height: 2.8,
             ),
-            suffixIcon: Icon(
-              OlhoLovepeople.olhinho_senha,
-              color: Color(0xFF3101B9),
-              size: 35,
-            ),
           ),
           autofocus: true,
           maxLines: 1,
-          obscureText: true,
-          obscuringCharacter: '*',
+          obscureText: isHiddenPassword,
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
@@ -165,21 +184,23 @@ class _RegisterUserState extends State<RegisterUser> {
           ),
           controller: password,
           validator: (value) {
-            if (value!.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Container(
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  'O campo Senha é obrigatório!',
-                  style: TextStyle(
-                    fontFamily: "Tahoma",
-                    fontSize: 14,
-                  ),
-                ),
-              )));
-            }
-            return null;
+          if (value!.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Color(0xFF3101B9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+            ),
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'Senha é obrigatório!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "Tahoma",
+                fontSize: 14,
+              ),
+            )));
+          }
+          return null;
           },
           onSaved: (value) {
             password.text = value!;
@@ -200,11 +221,24 @@ class _RegisterUserState extends State<RegisterUser> {
               borderRadius: BorderRadius.circular(10),
             ),
             hintText: 'Confirmar senha',
-            suffixIcon: Icon(
-              OlhoLovepeople.olhinho_senha,
-              color: Color(0xFF3101B9),
-              size: 35,
-            ),
+            suffixIcon: IconButton(
+              icon: isHiddenPassword == true ?
+              Icon(
+                OlhoLovepeople.olhinho_senha,
+                color: Color(0xFF3101B9),
+                size: 35,
+              ):
+              Icon(
+                OlhoLovepeople.olhinho_senha,
+                color: Colors.grey,
+                size: 35,
+              ),
+              onPressed: (){
+                setState((){
+                  isHiddenPassword = !isHiddenPassword;
+                });
+              }
+            ),            
             hintStyle: TextStyle(
               fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
@@ -215,8 +249,8 @@ class _RegisterUserState extends State<RegisterUser> {
           ),
           autofocus: true,
           maxLines: 1,
-          obscureText: true,
-          obscuringCharacter: '*',
+          obscureText: isHiddenPassword,
+          //obscuringCharacter: '*',
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
@@ -226,29 +260,35 @@ class _RegisterUserState extends State<RegisterUser> {
           validator: (value) {
             if (value!.isEmpty) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Container(
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  'O campo Confirmar senha é obrigatório!',
-                  style: TextStyle(
-                    fontFamily: "Tahoma",
-                    fontSize: 14,
-                  ),
+              backgroundColor: Color(0xFF3101B9),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+              ),
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                'Confirmar senha é obrigatório!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "Tahoma",
+                  fontSize: 14,
                 ),
               )));
             }
-            if (value != password.text) {
+            if (value != password.text &&
+                password.text != '' &&
+                cPassword.text != '') {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Container(
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  'As duas senhas não coincidem :(',
-                  style: TextStyle(
-                    fontFamily: "Tahoma",
-                    fontSize: 14,
-                  ),
+              backgroundColor: Color(0xFF3101B9),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+              ),
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                'As senhas não coincidem :(',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "Tahoma",
+                  fontSize: 14,
                 ),
               )));
             }
@@ -262,7 +302,7 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea( // mantiene el menu superior con el color padrón (en mi caso, negro) //
+    return SafeArea(//* SafeArea() mantiene el menu superior con el color padrón (en mi caso, negro)
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -314,12 +354,12 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       ),
                       onPressed: () {
-                        registerNow(context);
+                        _registerNow(context);
                       },
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 70, 0, 15), // cambiar valor de T=100, caso elimine SafeArea()
+                    margin: EdgeInsets.fromLTRB(0, 70, 0,15), //* cambiar valor de T=100, caso elimine SafeArea()
                     child: DotWidget(
                       dashColor: Colors.white,
                       totalWidth: 296,
@@ -344,7 +384,7 @@ class _RegisterUserState extends State<RegisterUser> {
                               color: Color(0xFFFFD600),
                             )),
                         onPressed: () {
-                          registerOld(context);
+                          _registerOld(context);
                         },
                       ),
                     ],
@@ -358,7 +398,9 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 
-  void registerNow(context) {
+//! Uso exclusivo para la prueba de _formKey y Navigator
+
+  void _registerNow(context) {
     // if (_formKey.currentState!.validate()) {
     //   _formKey.currentState!.save();
     //   print(name.text);
@@ -368,7 +410,8 @@ class _RegisterUserState extends State<RegisterUser> {
     //   if (name.text != '' &&
     //       email.text != '' &&
     //       password.text != '' &&
-    //       cPassword.text != '' && password.text == cPassword.text) {
+    //       cPassword.text != '' &&
+    //       password.text == cPassword.text) {
     //     Navigator.of(context)
     //         .push(
     //           MaterialPageRoute(
@@ -381,7 +424,7 @@ class _RegisterUserState extends State<RegisterUser> {
     // }
   }
 
-  void registerOld(context) {
+  void _registerOld(context) {
     // Navigator.of(context).pop();
   }
 }
@@ -403,7 +446,7 @@ class _RegisterUserState extends State<RegisterUser> {
 //                 margin: EdgeInsets.only(top: 180),
 //                 child: Center(
 //                   child: Text(
-//                     'Cadastro Concluído!',
+//                     'JAJAJA... ;)',
 //                     style: GoogleFonts.montserrat(
 //                       textStyle: TextStyle(
 //                         fontWeight: FontWeight.w500,
