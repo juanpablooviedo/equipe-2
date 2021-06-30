@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:todo_lovepeople/Utils/dot_widget.dart';
-
-import 'components/my_flutter_app_icons.dart';
-=======
 import 'package:google_fonts/google_fonts.dart';
 import 'components/login_access.dart';
->>>>>>> master
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -40,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     width: 150,
                     height: 150,
-                    child: Image.asset('assets/images/logo_lovepeople.png'),
+                    child: Image.asset('assets/image/logo_lovepeople.png'),
                   ),
                   Text(
                     "Lovepeople",
