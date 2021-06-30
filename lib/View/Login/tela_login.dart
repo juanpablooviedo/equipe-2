@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     width: 150,
                     height: 150,
-                    child: Image.asset('assets/images/logo_lovepeople.png'),
+                    child: Image.asset('assets/image/logo_lovepeople.png'),
                   ),
                   Text(
                     "Lovepeople",
