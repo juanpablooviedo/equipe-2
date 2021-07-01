@@ -55,7 +55,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                           bottom: 20,
                         ),
                         child: Image.asset(
-                          'assets/images/logo_lovepeople.png',
+                          'assets/image/logo_lovepeople.png',
                           height: 55,
                           width: 55,
                         ),
