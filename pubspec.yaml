@@ -66,13 +66,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-<<<<<<< HEAD
-=======
+
+
   - family:  OlhoLovepeople
     fonts:
     - asset: assets/icons/OlhoLovepeople.ttf
 
->>>>>>> master
   - family: MyFlutterApp
     fonts:
     - asset: assets/icons/MyFlutterApp.ttf
