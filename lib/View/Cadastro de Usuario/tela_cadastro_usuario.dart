@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_lovepeople/View/Login/components/my_flutter_app_icons.dart';
+<<<<<<< HEAD
+=======
+
+//! Ver gerenciamiento de estado
+//! Ver providers
+//! API
+//! git checkout -b feature/juan/tela-cadastro-usuario-api
+//! git commit -m "Iniciando integração com API"
+//! git commit -m "Integração com API finalizado"
+
+import 'components/olho_lovepeople_icons.dart';
+
+>>>>>>> master
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -255,8 +268,16 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return SafeArea(
       // mantiene el menu superior con el color padrón (en mi caso, negro) //
+=======
+    // mantiene el menu superior con el color padrón (en mi caso, negro) //
+
+    return SafeArea(
+      // mantiene el menu superior con el color padrón (en mi caso, negro) //
+
+>>>>>>> master
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -309,12 +330,21 @@ class _RegisterUserState extends State<RegisterUser> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed("sucesso");
+<<<<<<< HEAD
+=======
+
+                        registerNow(context);
+>>>>>>> master
                       },
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 70, 0,
                         15), // cambiar valor de T=100, caso elimine SafeArea()
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                     child: DotWidget(
                       dashColor: Colors.white,
                       totalWidth: 296,
@@ -340,6 +370,10 @@ class _RegisterUserState extends State<RegisterUser> {
                             )),
                         onPressed: () {
                           Navigator.of(context).pushReplacementNamed("login");
+<<<<<<< HEAD
+=======
+                          registerOld(context);
+>>>>>>> master
                         },
                       ),
                     ],
@@ -415,4 +449,12 @@ class _RegisterUserState extends State<RegisterUser> {
 //       ),
 //     );
 //   }
+<<<<<<< HEAD
 // }
+=======
+
+// }
+
+// }
+
+>>>>>>> master

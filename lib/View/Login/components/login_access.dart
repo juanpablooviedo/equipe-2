@@ -122,6 +122,10 @@ class _LoginAccessState extends State<LoginAccess> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                             if (_formKey.currentState!.validate()) {
                               Navigator.of(context)
                                   .pushReplacementNamed("listaTarefa");
