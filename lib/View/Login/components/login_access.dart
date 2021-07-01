@@ -108,10 +108,14 @@ class _LoginAccessState extends State<LoginAccess> {
                                 fontSize: 15.0,
                                 color: Color(0xFFFFD600),
                               )),
+<<<<<<< HEAD
                           onPressed: () {
                             Navigator.of(context)
                                 .pushReplacementNamed("recupera");
                           },
+=======
+                          onPressed: () {},
+>>>>>>> master
                         ),
                       ],
                     ),
@@ -122,10 +126,14 @@ class _LoginAccessState extends State<LoginAccess> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+<<<<<<< HEAD
                             if (_formKey.currentState!.validate()) {
                               Navigator.of(context)
                                   .pushReplacementNamed("listaTarefa");
                             }
+=======
+                            if (_formKey.currentState!.validate()) {}
+>>>>>>> master
                           },
                           child: Text(
                             "Entrar",
@@ -167,10 +175,14 @@ class _LoginAccessState extends State<LoginAccess> {
                                     fontSize: 15.0,
                                     color: Color(0xFFFFD600),
                                   )),
+<<<<<<< HEAD
                               onPressed: () {
                                 Navigator.of(context)
                                     .pushReplacementNamed("telaCadastro");
                               },
+=======
+                              onPressed: () {},
+>>>>>>> master
                             ),
                           ],
                         ),
