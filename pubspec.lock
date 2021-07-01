@@ -89,6 +89,16 @@ packages:
     source: sdk
     version: "0.0.0"
   google_fonts:
+<<<<<<< HEAD
+=======
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
+  http:
+>>>>>>> master
     dependency: "direct main"
     description:
       name: google_fonts
@@ -164,6 +174,44 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+=======
+    version: "0.2.1"
+  path_provider:
+    dependency: transitive
+    description:
+      name: path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  path_provider_linux:
+    dependency: transitive
+    description:
+      name: path_provider_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  path_provider_macos:
+    dependency: transitive
+    description:
+      name: path_provider_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  path_provider_platform_interface:
+    dependency: transitive
+    description:
+      name: path_provider_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
+  path_provider_windows:
+    dependency: transitive
+    description:
+      name: path_provider_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+>>>>>>> master
     version: "2.0.1"
   pedantic:
     dependency: transitive
@@ -178,6 +226,16 @@ packages:
       name: platform
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+=======
+    version: "4.1.0"
+  platform:
+    dependency: transitive
+    description:
+      name: platform
+      url: "https://pub.dartlang.org"
+    source: hosted
+>>>>>>> master
     version: "3.0.0"
   plugin_platform_interface:
     dependency: transitive
@@ -188,6 +246,16 @@ packages:
     version: "2.0.0"
   process:
     dependency: transitive
+<<<<<<< HEAD
+=======
+    description:
+      name: process
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.1"
+  provider:
+    dependency: "direct main"
+>>>>>>> master
     description:
       name: process
       url: "https://pub.dartlang.org"
@@ -262,6 +330,16 @@ packages:
     source: hosted
     version: "2.2.4"
   xdg_directories:
+<<<<<<< HEAD
+=======
+    dependency: transitive
+    description:
+      name: xdg_directories
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
+  xml:
+>>>>>>> master
     dependency: transitive
     description:
       name: xdg_directories
@@ -270,4 +348,8 @@ packages:
     version: "0.2.0"
 sdks:
   dart: ">=2.13.0 <3.0.0"
+<<<<<<< HEAD
   flutter: ">=1.20.0"
+=======
+  flutter: ">=1.24.0-7.0"
+>>>>>>> master
