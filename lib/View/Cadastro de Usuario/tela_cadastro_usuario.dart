@@ -1,11 +1,12 @@
-//! Ver gerenciamiento de estado
-//! Ver providers
+//* Navigator e Validator
+  //* git checkout -b feature/juan/tela-cadastro-usuario-navigator
+    //* git commit -m "Navegação e validação entre telas"
 
 //! API - estudar (aula - documentação - videos)
 //! API - iniciar
-//! git checkout -b feature/juan/tela-cadastro-usuario-api
-//! git commit -m "Iniciando integração com API"
-//! git commit -m "Integração com API finalizado"
+  //! git checkout -b feature/juan/tela-cadastro-usuario-api
+    //! git commit -m "Iniciando integração com API"
+    //! git commit -m "Integração com API finalizado"
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -29,7 +30,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildNameField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 20, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -44,7 +45,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -84,7 +85,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildEmailField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -99,7 +100,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -138,7 +139,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildPasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -171,7 +172,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -211,7 +212,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildCpasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -244,7 +245,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -331,7 +332,7 @@ class _RegisterUserState extends State<RegisterUser> {
                   _buildPasswordField(),
                   _buildCpasswordField(),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                     child: ElevatedButton(
                       child: Text(
                         'Cadastrar',
@@ -397,70 +398,25 @@ class _RegisterUserState extends State<RegisterUser> {
       ),
     );
   }
-
-//! Uso exclusivo para la prueba de _formKey y Navigator
-
+  
   void _registerNow(context) {
-    // if (_formKey.currentState!.validate()) {
-    //   _formKey.currentState!.save();
-    //   print(name.text);
-    //   print(email.text);
-    //   print(password.text);
-    //   print(cPassword.text);
-    //   if (name.text != '' &&
-    //       email.text != '' &&
-    //       password.text != '' &&
-    //       cPassword.text != '' &&
-    //       password.text == cPassword.text) {
-    //     Navigator.of(context)
-    //         .push(
-    //           MaterialPageRoute(
-    //             builder: (context) => Success(),
-    //           ),
-    //         )
-    //         .then((value) {});
-    //     _formKey.currentState!.reset();
-    //   }
-    // }
-  }
-
-  void _registerOld(context) {
-    // Navigator.of(context).pop();
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      if (name.text != '' &&
+          email.text != '' &&
+          password.text != '' &&
+          cPassword.text != '' &&
+          password.text == cPassword.text) {
+        Navigator.of(context)
+            .pushReplacementNamed('RegisterSuccess')
+            .then((value) {});
+        _formKey.currentState!.reset();
+      }
+    }
   }
 }
 
-//! Uso exclusivo para la prueba de _formKey y Navigator
-
-// class Success extends StatelessWidget {
-//   const Success({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: Color(0xFFA901F7),
-//         body: SafeArea(
-//           child: Column(
-//             children: [
-//               Container(
-//                 margin: EdgeInsets.only(top: 180),
-//                 child: Center(
-//                   child: Text(
-//                     'JAJAJA... ;)',
-//                     style: GoogleFonts.montserrat(
-//                       textStyle: TextStyle(
-//                         fontWeight: FontWeight.w500,
-//                       ),
-//                       color: Colors.white,
-//                       fontSize: 25,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+void _registerOld(context) {
+  Navigator.of(context)
+      .popAndPushNamed('LoginPage');
+}

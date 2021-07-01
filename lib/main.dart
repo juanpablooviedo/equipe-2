@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
-import 'View/Login/tela_login.dart';
->>>>>>> master
+
+import 'View/Cadastro de Usuario/tela_cadastro_usuario.dart';
 
 main() {
   runApp(MyApp());
@@ -13,13 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
-      title: 'lovepeople',
-    );    
-=======
-      home: LoginPage(),
+      home: RegisterUser(),
       debugShowCheckedModeBanner: false,
     );
->>>>>>> master
   }
 }
