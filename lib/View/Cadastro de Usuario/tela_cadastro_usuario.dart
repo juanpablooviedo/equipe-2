@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_lovepeople/View/Login/components/my_flutter_app_icons.dart';
+=======
 //! Ver gerenciamiento de estado
 //! Ver providers
 //! API
@@ -9,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'components/olho_lovepeople_icons.dart';
+>>>>>>> master
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -149,7 +156,11 @@ class _RegisterUserState extends State<RegisterUser> {
               height: 2.8,
             ),
             suffixIcon: Icon(
+<<<<<<< HEAD
+              MyFlutterApp.olhinho_senha_inicio,
+=======
               OlhoLovepeople.olhinho_senha,
+>>>>>>> master
               color: Color(0xFF3101B9),
               size: 35,
             ),
@@ -201,7 +212,11 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Confirmar senha',
             suffixIcon: Icon(
+<<<<<<< HEAD
+              MyFlutterApp.olhinho_senha_inicio,
+=======
               OlhoLovepeople.olhinho_senha,
+>>>>>>> master
               color: Color(0xFF3101B9),
               size: 35,
             ),
@@ -262,7 +277,12 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
+    return SafeArea(
+      // mantiene el menu superior con el color padrón (en mi caso, negro) //
+=======
     return SafeArea( // mantiene el menu superior con el color padrón (en mi caso, negro) //
+>>>>>>> master
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -314,12 +334,21 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       ),
                       onPressed: () {
+<<<<<<< HEAD
+                        Navigator.of(context).pushReplacementNamed("sucesso");
+=======
                         registerNow(context);
+>>>>>>> master
                       },
                     ),
                   ),
                   Container(
+<<<<<<< HEAD
+                    margin: EdgeInsets.fromLTRB(0, 70, 0,
+                        15), // cambiar valor de T=100, caso elimine SafeArea()
+=======
                     margin: EdgeInsets.fromLTRB(0, 70, 0, 15), // cambiar valor de T=100, caso elimine SafeArea()
+>>>>>>> master
                     child: DotWidget(
                       dashColor: Colors.white,
                       totalWidth: 296,
@@ -344,7 +373,11 @@ class _RegisterUserState extends State<RegisterUser> {
                               color: Color(0xFFFFD600),
                             )),
                         onPressed: () {
+<<<<<<< HEAD
+                          Navigator.of(context).pushReplacementNamed("login");
+=======
                           registerOld(context);
+>>>>>>> master
                         },
                       ),
                     ],
@@ -420,4 +453,8 @@ class _RegisterUserState extends State<RegisterUser> {
 //       ),
 //     );
 //   }
+<<<<<<< HEAD
 // }
+=======
+// }
+>>>>>>> master
