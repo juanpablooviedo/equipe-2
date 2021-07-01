@@ -408,7 +408,7 @@ class _RegisterUserState extends State<RegisterUser> {
           cPassword.text != '' &&
           password.text == cPassword.text) {
         Navigator.of(context)
-            .pushReplacementNamed('RegisterSuccess')
+            .pushReplacementNamed('sucesso')
             .then((value) {});
         _formKey.currentState!.reset();
       }
@@ -418,5 +418,5 @@ class _RegisterUserState extends State<RegisterUser> {
 
 void _registerOld(context) {
   Navigator.of(context)
-      .popAndPushNamed('LoginPage');
+      .popAndPushNamed('login');
 }
