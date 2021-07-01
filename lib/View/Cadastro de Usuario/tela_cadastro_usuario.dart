@@ -308,7 +308,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       ),
                       onPressed: () {
-                        registerNow(context);
+                        Navigator.of(context).pushReplacementNamed("sucesso");
                       },
                     ),
                   ),
@@ -339,7 +339,7 @@ class _RegisterUserState extends State<RegisterUser> {
                               color: Color(0xFFFFD600),
                             )),
                         onPressed: () {
-                          registerOld(context);
+                          Navigator.of(context).pushReplacementNamed("login");
                         },
                       ),
                     ],

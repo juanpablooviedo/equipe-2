@@ -31,7 +31,9 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed("login");
+                    },
                     child: Text(
                       "Começar",
                       style: TextStyle(
