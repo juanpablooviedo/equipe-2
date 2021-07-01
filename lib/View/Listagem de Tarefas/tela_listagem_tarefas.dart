@@ -30,7 +30,7 @@ class _TelaTarefasState extends State<TelaTarefas> {
               ),
               padding: EdgeInsets.only(top: 10, left: 10),
               child: Image.asset(
-                "assets/image/botão-recomeçar.png",
+                'assets/image/logo_lovepeople.png',
                 height: 45,
                 width: 45,
                 fit: BoxFit.fill,

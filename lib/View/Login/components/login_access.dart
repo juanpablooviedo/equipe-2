@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo_lovepeople/Presenter/login_controller.dart';
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 import 'my_flutter_app_icons.dart';
+import 'package:provider/provider.dart';
 
 class LoginAccess extends StatefulWidget {
   const LoginAccess({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class LoginAccess extends StatefulWidget {
 class _LoginAccessState extends State<LoginAccess> {
   final _formKey = GlobalKey<FormState>();
   bool _secureText = true;
+  final _ctrlLogin = TextEditingController();
+  final _ctrlSenha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,7 @@ class _LoginAccessState extends State<LoginAccess> {
             margin: EdgeInsets.all(20.0),
             child: Column(children: [
               TextFormField(
+                  controller: _ctrlLogin,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Esse campo é obrigatório!';
@@ -48,6 +53,7 @@ class _LoginAccessState extends State<LoginAccess> {
                 height: 20,
               ),
               TextFormField(
+                controller: _ctrlSenha,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Esse campo é obrigatório!';
@@ -108,7 +114,10 @@ class _LoginAccessState extends State<LoginAccess> {
                                 fontSize: 15.0,
                                 color: Color(0xFFFFD600),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacementNamed("recupera");
+                          },
                         ),
                       ],
                     ),
@@ -119,7 +128,7 @@ class _LoginAccessState extends State<LoginAccess> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
+                            _clickButton(context);
                           },
                           child: Text(
                             "Entrar",
@@ -161,7 +170,10 @@ class _LoginAccessState extends State<LoginAccess> {
                                     fontSize: 15.0,
                                     color: Color(0xFFFFD600),
                                   )),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed("telaCadastro");
+                              },
                             ),
                           ],
                         ),
@@ -175,5 +187,16 @@ class _LoginAccessState extends State<LoginAccess> {
         ),
       ),
     );
+  }
+
+  void _clickButton(BuildContext context) {
+    bool formOk = _formKey.currentState!.validate();
+    if (!formOk) {
+      return;
+    }
+    String password = _ctrlSenha.text;
+    String user = _ctrlLogin.text;
+    print("login: $user senha: $password");
+    context.read<LoginController>().login(user, password);
   }
 }
