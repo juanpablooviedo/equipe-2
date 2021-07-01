@@ -6,7 +6,7 @@ class DotWidget extends StatelessWidget {
   final Color dashColor;
 
   const DotWidget({
-    this.totalWidth = 301,
+    this.totalWidth = 288,
     this.dashWidth = 10,
     this.emptyWidth = 5,
     this.dashHeight = 2,
