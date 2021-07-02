@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:ui';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/popup%20Excluir/dialog_excluir_tarefa.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
+import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/listaWidget.dart';
 
 class TelaTarefas extends StatefulWidget {
   const TelaTarefas({Key? key}) : super(key: key);
@@ -10,6 +13,14 @@ class TelaTarefas extends StatefulWidget {
 }
 
 class _TelaTarefasState extends State<TelaTarefas> {
+  List<Tarefa> tarefas = [];
+
+  @override
+  void initState() {
+    download();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,35 +72,7 @@ class _TelaTarefasState extends State<TelaTarefas> {
             ),
             Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 30,
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.search,
-                        size: 40,
-                        color: Color(0xFF3101B9),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      filled: true,
-                      hintStyle: TextStyle(
-                          color: Color(0xFF3101B9),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Tahoma'),
-                      hintText: "Busque palavras-chave",
-                      fillColor: Color(0xFFFFFFFF),
-                    ),
-                  ),
-                ),
+                palavraChave(),
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 10,
@@ -97,55 +80,80 @@ class _TelaTarefasState extends State<TelaTarefas> {
                     right: 20,
                     bottom: 10,
                   ),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: ListTile(
-                      contentPadding: EdgeInsets.all(10),
-                      title: Text(
-                        "text",
-                        style: TextStyle(
-                          color: Color(0xFF3101B9),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Montserrat-SemiBold',
-                        ),
-                      ),
-                      subtitle: Text(
-                        "text",
-                        style: TextStyle(
-                          color: Color(0xFF3101B9),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          fontFamily: 'Tahoma',
-                        ),
-                      ),
-                      trailing: Icon(Icons.delete_outline_outlined),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) => excluir(context),
+                  child: ListView.builder(
+                      itemCount: tarefas.length,
+                      itemBuilder: (context, index) {
+                        return TarefaWidget(
+                          tarefa: tarefas[index],
                         );
-                      },
-                    ),
-                  ),
+                      }),
                 ),
               ],
             ),
           ],
         ),
       ]),
-      bottomNavigationBar: Container(
-        child: IconButton(
-          icon: Icon(Icons.add_rounded),
-          onPressed: () {
-            Navigator.of(context).pushNamed("telaCadastroTarefa");
-          },
-          color: Color(0xFFFFFFFF),
-          iconSize: 100,
+      bottomNavigationBar: adicionarTarefa(context),
+    ));
+  }
+
+  Container adicionarTarefa(BuildContext context) {
+    return Container(
+      child: IconButton(
+        icon: Icon(Icons.add_rounded),
+        onPressed: () {
+          Navigator.of(context).pushNamed("telaCadastroTarefa");
+        },
+        color: Color(0xFFFFFFFF),
+        iconSize: 100,
+      ),
+    );
+  }
+
+  Padding palavraChave() {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 30,
+        left: 20,
+        right: 20,
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          suffixIcon: Icon(
+            Icons.search,
+            size: 40,
+            color: Color(0xFF3101B9),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          filled: true,
+          hintStyle: TextStyle(
+              color: Color(0xFF3101B9),
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              fontFamily: 'Tahoma'),
+          hintText: "Busque palavras-chave",
+          fillColor: Color(0xFFFFFFFF),
         ),
       ),
-    ));
+    );
+  }
+
+  void download() {
+    var url = Uri.parse('https://todo-lovepeople.herokuapp.com/todos');
+    http.get(url).then((resposta) {
+      if (resposta.statusCode == 200) {
+        Map json = JsonDecoder().convert(resposta.body);
+
+        setState(() {
+          tarefas = json["data"].map<Tarefa>((item) {
+            return Tarefa.fromJson(item);
+          }).toList();
+        });
+      }
+    });
   }
 }
