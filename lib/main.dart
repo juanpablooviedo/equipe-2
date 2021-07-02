@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_lovepeople/Model/Login/API_login.dart';
+import 'package:todo_lovepeople/Model/Login/login.dart';
+import 'package:todo_lovepeople/Presenter/login_controller.dart';
 import 'View/Cadastro de Tarefa/tela_cadastro_tarefa.dart';
 import 'View/Cadastro de Usuario/tela_cadastro_usuario.dart';
 import 'View/Listagem de Tarefas/tela_listagem_tarefas.dart';
@@ -14,19 +18,22 @@ main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: "login",
-      routes: {
-        "login": (context) => LoginPage(),
-        "telaCadastro": (context) => RegisterUser(),
-        "sucesso": (context) => RegisterSuccess(),
-        "telaCadastroTarefa": (context) => CadastroTarefa(),
-        "listaTarefa": (context) => TelaTarefas(),
-        "recupera": (context) => RecuperaSenha(),
-      },
-      title: 'lovepeople',
-      home: LoginPage(),
-      debugShowCheckedModeBanner: false,
+    return ChangeNotifierProvider(
+      create: (_) => LoginController(Authentication()),
+      child: MaterialApp(
+        initialRoute: "login",
+        routes: {
+          "login": (context) => LoginPage(),
+          "telaCadastro": (context) => RegisterUser(),
+          "sucesso": (context) => RegisterSuccess(),
+          "telaCadastroTarefa": (context) => CadastroTarefa(),
+          "listaTarefa": (context) => TelaTarefas(),
+          "recupera": (context) => RecuperaSenha(),
+        },
+        title: 'lovepeople',
+        home: LoginPage(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

@@ -7,6 +7,9 @@ class LoginController extends ChangeNotifier {
   LoginController(this._authentication);
 
   void login(String user, String password) {
-    _authentication.login(user, password).then((value) {});
+    _authentication.login(user, password).then((value) {
+      print(value);
+      // criar caminho para pagina de tarefas
+    });
   }
 }
