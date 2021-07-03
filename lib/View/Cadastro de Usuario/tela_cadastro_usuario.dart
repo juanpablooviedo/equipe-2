@@ -265,11 +265,8 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
-    // mantiene el menu superior con el color padrón (en mi caso, negro) //
-
     return SafeArea(
       // mantiene el menu superior con el color padrón (en mi caso, negro) //
-
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -437,3 +434,4 @@ class _RegisterUserState extends State<RegisterUser> {
 
 // }
 
+// }
