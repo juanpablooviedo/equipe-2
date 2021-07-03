@@ -1,15 +1,22 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
 
 class ListagemTarefaRepository {
-  Future<Tarefa> listagemTarefa() async {
-    var uri = Uri.parse('https://todo-lovepeople.herokuapp.com/todos');
-    var response = await http.get(uri, headers: {
-      HttpHeaders.authorizationHeader: "Bearer {token}",
-    });
-    var json = jsonDecode(response.body);
-    return Tarefa.fromJson(json);
+  final dio = Dio();
+  final url = 'https://jsonplaceholder.typicode.com/todos';
+
+  Future fetchTarefas() async {
+    final response = await dio.get(url);
+    final list = response.data as List;
+
+    List<Tarefa> tarefas = [];
+    for (var json in list) {
+      final tarefa = Tarefa.fromJson(json);
+      tarefas.add(tarefa);
+    }
+    return tarefas;
   }
 }
+
+
+//'https://todo-lovepeople.herokuapp.com/todos'

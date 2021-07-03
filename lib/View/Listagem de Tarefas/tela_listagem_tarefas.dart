@@ -16,12 +16,6 @@ class _TelaTarefasState extends State<TelaTarefas> {
   List<Tarefa> tarefas = [];
 
   @override
-  void initState() {
-    download();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -140,20 +134,5 @@ class _TelaTarefasState extends State<TelaTarefas> {
         ),
       ),
     );
-  }
-
-  void download() {
-    var url = Uri.parse('https://todo-lovepeople.herokuapp.com/todos');
-    http.get(url).then((resposta) {
-      if (resposta.statusCode == 200) {
-        Map json = JsonDecoder().convert(resposta.body);
-
-        setState(() {
-          tarefas = json["data"].map<Tarefa>((item) {
-            return Tarefa.fromJson(item);
-          }).toList();
-        });
-      }
-    });
   }
 }

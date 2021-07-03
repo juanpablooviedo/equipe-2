@@ -3,20 +3,19 @@ import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dar
 import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/popup%20Excluir/dialog_excluir_tarefa.dart';
 
 class TarefaWidget extends StatelessWidget {
-  final Tarefa? tarefa;
-  const TarefaWidget({Key? key, this.tarefa}) : super(key: key);
+  final Tarefa tarefa;
+  const TarefaWidget({Key? key, required this.tarefa}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: tarefa.color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
       child: ListTile(
         contentPadding: EdgeInsets.all(10),
         title: Text(
-          tarefa.title,
+          "text",
           style: TextStyle(
             color: Color(0xFF3101B9),
             fontWeight: FontWeight.bold,
@@ -25,7 +24,7 @@ class TarefaWidget extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          tarefa.description,
+          "text",
           style: TextStyle(
             color: Color(0xFF3101B9),
             fontWeight: FontWeight.bold,
