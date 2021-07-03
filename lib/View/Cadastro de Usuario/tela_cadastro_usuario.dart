@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_lovepeople/View/Login/components/my_flutter_app_icons.dart';
-
-//! Ver gerenciamiento de estado
-//! Ver providers
-//! API
-//! git checkout -b feature/juan/tela-cadastro-usuario-api
-//! git commit -m "Iniciando integração com API"
-//! git commit -m "Integração com API finalizado"
-
-import 'components/olho_lovepeople_icons.dart';
-
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -265,11 +255,8 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
-    // mantiene el menu superior con el color padrón (en mi caso, negro) //
-
     return SafeArea(
       // mantiene el menu superior con el color padrón (en mi caso, negro) //
-
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -322,15 +309,12 @@ class _RegisterUserState extends State<RegisterUser> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed("sucesso");
-
-                        registerNow(context);
                       },
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 70, 0,
                         15), // cambiar valor de T=100, caso elimine SafeArea()
-
                     child: DotWidget(
                       dashColor: Colors.white,
                       totalWidth: 296,
@@ -356,7 +340,6 @@ class _RegisterUserState extends State<RegisterUser> {
                             )),
                         onPressed: () {
                           Navigator.of(context).pushReplacementNamed("login");
-                          registerOld(context);
                         },
                       ),
                     ],
@@ -432,8 +415,8 @@ class _RegisterUserState extends State<RegisterUser> {
 //       ),
 //     );
 //   }
-
 // }
 
 // }
 
+// }
