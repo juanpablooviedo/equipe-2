@@ -77,7 +77,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
                   Container(
                     width: 250,
                     height: 150,
-                    child: Image.asset("assets/images/ada.png"),
+                    child: Image.asset("assets/image/ada.png"),
                   ),
                 ],
               ),

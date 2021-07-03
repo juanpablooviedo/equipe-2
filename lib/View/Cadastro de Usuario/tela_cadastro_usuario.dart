@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_lovepeople/View/Login/components/my_flutter_app_icons.dart';
-//! Ver gerenciamiento de estado
-//! Ver providers
-//! API
-//! git checkout -b feature/juan/tela-cadastro-usuario-api
-//! git commit -m "Iniciando integração com API"
-//! git commit -m "Integração com API finalizado"
-
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -422,4 +415,8 @@ class _RegisterUserState extends State<RegisterUser> {
 //       ),
 //     );
 //   }
+// }
+
+// }
+
 // }

@@ -7,11 +7,16 @@ class LoginController extends ChangeNotifier {
 
   LoginController(this._authentication);
 
-  void login(String user, String password) {
+  void login(String user, String password, BuildContext context) async {
     _authentication.login(user, password).then((value) {
       print(value);
       globals.token = value.jwt;
+<<<<<<< HEAD
       // criar caminho para pagina de tarefas
+=======
+      Navigator.of(context).pushReplacementNamed("telaCadastroTarefa");
+      // criar caminho para pagina de lista de tarefas
+>>>>>>> feature/anita/api/cadastroDeTarefa
     });
   }
 }
