@@ -128,15 +128,7 @@ class _LoginAccessState extends State<LoginAccess> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-<<<<<<< HEAD
-
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.of(context)
-                                  .pushReplacementNamed("listaTarefa");
-                            }
-=======
                             _clickButton(context);
->>>>>>> feature/ednacio/api/login
                           },
                           child: Text(
                             "Entrar",
