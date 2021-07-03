@@ -6,6 +6,10 @@ class CadastroTarefa extends StatefulWidget {
 }
 
 class _CadastroTarefaState extends State<CadastroTarefa> {
+  final _formKey = GlobalKey<FormState>();
+  final _ctrlTitle = TextEditingController();
+  final _ctrlDescription = TextEditingController();
+
   Widget colorButton(Color color) {
     return Container(
       width: 50,
@@ -93,6 +97,12 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: TextFormField(
+                  controller: _ctrlTitle,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Esse campo é obrigatório!';
+                    }
+                  },
                   style: TextStyle(
                     fontFamily: 'Tahoma',
                     fontSize: 25,
@@ -126,6 +136,12 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: TextFormField(
+                  controller: _ctrlDescription,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Esse campo é obrigatório!';
+                    }
+                  },
                   style: TextStyle(
                     fontFamily: 'Tahoma',
                     fontSize: 18,
