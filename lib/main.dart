@@ -18,8 +18,11 @@ main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => LoginController(Authentication()),
+    return MultiProvider(
+      providers: [
+        Provider<LoginController>(
+            create: (_) => LoginController(Authentication())),
+      ],
       child: MaterialApp(
         initialRoute: "login",
         routes: {
