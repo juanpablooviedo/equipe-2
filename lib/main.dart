@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         //Provider<AnotherThing>(create: (_) => AnotherThing()),
       ],
       child: MaterialApp(
-        initialRoute: "listaTarefa",
+        initialRoute: "login",
         routes: {
           "login": (context) => LoginPage(),
           "telaCadastro": (context) => RegisterUser(),
