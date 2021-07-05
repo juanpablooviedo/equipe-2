@@ -45,6 +45,22 @@ class _RecuperaSenha extends State<RecuperaSenha> {
               ],
             ),
           ),
+          Expanded(
+            child: Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/image/beleza.png',
+              ),
+            ),
+          ),
+          Text(
+            'Boa sorte da Equipe-2 a voce',
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontFamily: "Montserrat-SemiBold"),
+          ),
         ],
       ),
     );

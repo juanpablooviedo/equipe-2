@@ -11,7 +11,7 @@ class LoginController extends ChangeNotifier {
     _authentication.login(user, password).then((value) {
       print(value);
       globals.token = value.jwt;
-      Navigator.of(context).pushReplacementNamed("telaCadastroTarefa");
+      Navigator.of(context).pushReplacementNamed("listaTarefa");
       // criar caminho para pagina de lista de tarefas
     });
   }
