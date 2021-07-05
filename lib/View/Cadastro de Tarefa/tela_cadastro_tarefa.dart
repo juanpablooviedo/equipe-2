@@ -201,7 +201,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                     children: [
                       IconButton(
                         icon: Icon(
-                          Icons.close,
+                          Icons.close_rounded,
                           size: 100,
                         ),
                         color: Colors.white,
@@ -211,7 +211,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                       ),
                       IconButton(
                         icon: Icon(
-                          Icons.check,
+                          Icons.check_rounded,
                           size: 100,
                         ),
                         color: Colors.white,
