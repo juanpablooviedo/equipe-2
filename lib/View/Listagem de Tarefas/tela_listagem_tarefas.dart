@@ -11,50 +11,107 @@ class TelaTarefas extends StatefulWidget {
 }
 
 class _TelaTarefasState extends State<TelaTarefas> {
+  Widget task(String descricao, String titulo, int color) {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+        left: 10,
+        right: 10,
+      ),
+      child: Card(
+        color: Color(color),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: ListTile(
+          title: Text(
+            titulo,
+            style: TextStyle(
+              color: Color(0xFF3101B9),
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              fontFamily: 'Montserrat-SemiBold',
+            ),
+          ),
+          subtitle: Text(
+            descricao,
+            style: TextStyle(
+              color: Color(0xFF3101B9).withOpacity(.5),
+              fontSize: 17,
+              fontFamily: 'Tahoma',
+            ),
+          ),
+          trailing: Icon(
+            Icons.delete_outline_outlined,
+            color: Color(0xFF3101B9),
+            size: 40,
+          ),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => excluir(context),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
-        body: Stack(
+        body: Column(
           children: [
-            Container(
-              height: 80,
-              width: 80,
-              alignment: Alignment(-1.0, -1.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(100),
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(100),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          right: 20,
+                          bottom: 20,
+                        ),
+                        child: Image.asset(
+                          'assets/image/logo_lovepeople.png',
+                          height: 55,
+                          width: 55,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                color: Color(0xFFFFFFFF),
-              ),
-              padding: EdgeInsets.only(top: 10, left: 10),
-              child: Image.asset(
-                'assets/image/logo_lovepeople.png',
-                height: 45,
-                width: 45,
-                fit: BoxFit.fill,
-              ),
-            ),
-            Container(
-              alignment: Alignment(0.0, -0.9),
-              child: Text(
-                "Suas Listagens",
-                style: TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'Montserrat-SemiBold',
+                SizedBox(
+                  width: 45,
                 ),
-              ),
+                Text(
+                  'Suas Listagems',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat-SemiBold',
+                    fontSize: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 130,
-                left: 35,
-                right: 35,
-              ),
-              child: TextField(
+            SizedBox(height: 10),
+            Container(
+              margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+              child: TextFormField(
                 decoration: InputDecoration(
                   suffixIcon: Icon(
                     Icons.search,
@@ -63,61 +120,44 @@ class _TelaTarefasState extends State<TelaTarefas> {
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+                      Radius.circular(15),
                     ),
                   ),
                   filled: true,
                   hintStyle: TextStyle(
                       color: Color(0xFF3101B9),
-                      fontWeight: FontWeight.bold,
                       fontSize: 20,
                       fontFamily: 'Tahoma'),
                   hintText: "Busque palavras-chave",
                   fillColor: Color(0xFFFFFFFF),
                 ),
+                style: TextStyle(
+                    color: Color(0xFF3101B9),
+                    fontSize: 20,
+                    fontFamily: 'Tahoma'),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 200,
-                left: 35,
-                right: 35,
-              ),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ListTile(
-                  contentPadding: EdgeInsets.all(10),
-                  title: Text(
-                    "Limpar a casa",
-                    style: TextStyle(
-                      color: Color(0xFF3101B9),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Montserrat-SemiBold',
-                    ),
-                  ),
-                  subtitle: Text(
-                    "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore ‘erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ",
-                    style: TextStyle(
-                      color: Color(0xFF3101B9),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      fontFamily: 'Tahoma',
-                    ),
-                  ),
-                  trailing: Icon(Icons.delete_outline_outlined),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => excluir(context),
-                    );
-                  },
+            Expanded(
+              child: Container(
+                height: 600,
+                width: double.infinity,
+                child: ListView(
+                  children: [
+                    task('descricao', 'titulo', 0xFFFFF2CC),
+                    task(
+                        'descricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricaodescricao',
+                        'titulo',
+                        0xFFFFF2CC),
+                  ],
                 ),
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: Icon(
+          Icons.add_rounded,
+          size: 120,
+          color: Colors.white,
         ),
       ),
     );
