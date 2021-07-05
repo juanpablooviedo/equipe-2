@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:async';
 import 'package:http/http.dart' as http;
 
 class UserAuthentication {
@@ -27,7 +27,7 @@ class User {
   String? email;
   String? provider;
   bool? confirmed;
-  bool? blocked; //TODO: ERRO!
+  dynamic blocked;
   Role? role;
   String? createdAt;
   String? updatedAt;
@@ -100,20 +100,20 @@ class Role {
 }
 
 class Authentication {
-  var url = Uri.parse('https://todo-lovepeople.herokuapp.com/auth/local/register');
-  var header = {HttpHeaders.authorizationHeader: "Bearer {token}"};
-
+  var url =
+      Uri.parse('https://todo-lovepeople.herokuapp.com/auth/local/register');
   Future<UserAuthentication> registeruser(
       String username, String email, String password) async {
-    var response = await http.post(url,body: {"username": username, "email": email, "password": password});
+    var response = await http.post(url,
+        body: {"username": username, "email": email, "password": password});
     var json = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        print('API OK! ${response.statusCode}');
-      } else {
-        print('API ERROR! ${response.statusCode}');
-      }
-    return UserAuthentication.fromJson(json);    
-  }  
+
+    if (response.statusCode == 200) {
+      print('API OK! statusCode: ${response.statusCode}');
+      return UserAuthentication.fromJson(json);
+    } else {
+      print('API ERROR! ${response.statusCode}');
+      throw Exception('Failed to authenticate user!');
+    }
+  }
 }
-
-

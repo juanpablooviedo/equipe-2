@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'components/olho_lovepeople_icons.dart';
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
 import 'package:todo_lovepeople/Presenter/controller_cadastro_usuario.dart';
-
+import 'package:provider/provider.dart';
 
 class RegisterUser extends StatefulWidget {
   @override
@@ -261,9 +260,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                   )));
             }
-            if (value != _password.text &&
-                _password.text != '' &&
-                _cPassword.text != '') {
+            if (value != _password.text &&_password.text != '' && _cPassword.text != '') {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   backgroundColor: Color(0xFF3101B9),
                   shape: RoundedRectangleBorder(
@@ -387,26 +384,24 @@ class _RegisterUserState extends State<RegisterUser> {
 // SafeArea() mantiene el menu superior con el color padrón (en mi caso, negro)
 // cambiar valor de T=100, caso elimine SafeArea()
 
-  void _registerNow(context) {
+  void _registerNow(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
     }
-    if (_username.text != '' && _email.text != '' && _password.text != '' && _cPassword.text != '' && _password.text == _cPassword.text) {
+    if (_username.text != '' &&
+        _email.text != '' &&
+        _password.text != '' &&
+        _cPassword.text != '' &&
+        _password.text == _cPassword.text) {      
       String username = _username.text;
       String email = _email.text;
-      String password = _password.text;
-      String cPassword = _cPassword.text;
-      print(
-        "FORM OK! username: $username email: $email password: $password cPassword: $cPassword"
-      );
-      Navigator.of(context).pushReplacementNamed('sucesso').then((value) {});
-          print('NAVIGATOR OK!');   
-    }
-    //context.read<UserController>().registeruser(username, email, password); //TODO: ERRO!
+      String password = _cPassword.text;
+      print("FORM OK! username: $username, email: $email, password: $password");
+      context.read<UserController>().registeruser(username, email, password, context);          
+    }    
   }
 
   void _registerOld(context) {
     Navigator.of(context).popAndPushNamed('login');
   }
-  
 }
