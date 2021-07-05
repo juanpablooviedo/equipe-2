@@ -29,49 +29,41 @@ class _LoginAccessState extends State<LoginAccess> {
             margin: EdgeInsets.all(20.0),
             child: Column(children: [
               TextFormField(
-                  controller: _ctrlLogin,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Esse campo é obrigatório!';
-                    }
-                  },
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    fontFamily: "Tahoma",
-                    color: Color(0xFF3101B9),
-                  ),
-                  decoration: InputDecoration(
-                      hintText: "Número de telefone, email ou CPF",
-                      hintStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                        fontFamily: "Tahoma",
-                        color: Color(0xFF3101B9),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true)),
+                maxLines: 1,
+                minLines: 1,
+                controller: _ctrlLogin,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Esse campo é obrigatório!';
+                  }
+                },
+                decoration: InputDecoration(
+                    hintText: "Número de telefone, email ou CPF",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontFamily: "Tahoma",
+                      color: Color(0xFF3101B9),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true),
+              ),
               SizedBox(
                 height: 20,
               ),
               TextFormField(
+                maxLines: 1,
+                minLines: 1,
                 controller: _ctrlSenha,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Esse campo é obrigatório!';
                   }
                 },
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  fontSize: 20,
-                  fontFamily: "Tahoma",
-                  color: Color(0xFF3101B9),
-                ),
                 decoration: InputDecoration(
                   hintText: "Senha",
                   hintStyle: TextStyle(
@@ -138,39 +130,56 @@ class _LoginAccessState extends State<LoginAccess> {
                       height: 30,
                     ),
                     Container(
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _clickButton(context);
-                          },
-                          child: Text(
-                            "Entrar",
-                            style: TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Montserrat-SemiBold"),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xFF3101B9)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      side: BorderSide(
-                                          color: Colors.white, width: 2)))),
-                        )),
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _clickButton(context);
+                        },
+                        child: Text(
+                          "Entrar",
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Montserrat-SemiBold"),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFF3101B9)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2)))),
+                      ),
+                    ),
                     SizedBox(
                       height: 20,
                     ),
-                    DotWidget(
-                      dashColor: Colors.white,
-                      dashHeight: 1.9,
-                      dashWidth: 1.5,
+                    Container(
+                      height: 10,
+                      width: double.infinity,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                        ],
+                      ),
                     ),
                     Center(
                       child: Container(
-                        margin: EdgeInsets.all(20.0),
+                        margin: EdgeInsets.only(top: 10),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text("Não possui cadastro?",
                                 style: TextStyle(
