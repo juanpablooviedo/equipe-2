@@ -1,17 +1,9 @@
-//! Ver gerenciamiento de estado
-//! Ver providers
-
-//! API - estudar (aula - documentação - videos)
-//! API - iniciar
-//! git checkout -b feature/juan/tela-cadastro-usuario-api
-//! git commit -m "Iniciando integração com API"
-//! git commit -m "Integração com API finalizado"
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'components/olho_lovepeople_icons.dart';
 import 'package:todo_lovepeople/Utils/dot_widget.dart';
+import 'package:todo_lovepeople/Presenter/controller_cadastro_usuario.dart';
+import 'package:provider/provider.dart';
 
 class RegisterUser extends StatefulWidget {
   @override
@@ -19,17 +11,17 @@ class RegisterUser extends StatefulWidget {
 }
 
 class _RegisterUserState extends State<RegisterUser> {
-  final name = TextEditingController();
-  final email = TextEditingController();
-  final password = TextEditingController();
-  final cPassword = TextEditingController();
+  final _username = TextEditingController();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _cPassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool isHiddenPassword = true;
+  bool _isHiddenPassword = true;
 
-  Widget _buildNameField() {
+  Widget _buildusernameField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 20, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -44,7 +36,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -55,28 +47,27 @@ class _RegisterUserState extends State<RegisterUser> {
             fontWeight: FontWeight.w500,
             color: Color(0xFF3101B9),
           ),
-          controller: name,
+          controller: _username,
           validator: (value) {
-          if (value!.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Color(0xFF3101B9),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)
-            ),
-            behavior: SnackBarBehavior.floating,
-            content: Text(
-              'Nome é obrigatório!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "Tahoma",
-                fontSize: 14,
-              ),
-            )));
-          }
-          return null;
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: Color(0xFF3101B9),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'Nome é obrigatório!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 14,
+                    ),
+                  )));
+            }
+            return null;
           },
           onSaved: (value) {
-            name.text = value!;
+            _username.text = value!;
           }),
     );
   }
@@ -84,7 +75,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildEmailField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -99,7 +90,7 @@ class _RegisterUserState extends State<RegisterUser> {
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
@@ -109,28 +100,27 @@ class _RegisterUserState extends State<RegisterUser> {
             fontWeight: FontWeight.w500,
             color: Color(0xFF3101B9),
           ),
-          controller: email,
+          controller: _email,
           validator: (value) {
-          if (value!.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Color(0xFF3101B9),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)
-            ),
-            behavior: SnackBarBehavior.floating,
-            content: Text(
-              'Telefone, email ou CPF é obrigatório!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "Tahoma",
-                fontSize: 14,
-              ),
-            )));
-          }
-          return null;
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: Color(0xFF3101B9),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'Telefone, email ou CPF é obrigatório!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 14,
+                    ),
+                  )));
+            }
+            return null;
           },
           onSaved: (value) {
-            email.text = value!;
+            _email.text = value!;
           }),
     );
   }
@@ -138,7 +128,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildPasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -149,61 +139,59 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Senha',
             suffixIcon: IconButton(
-              icon: isHiddenPassword == true ?
-              Icon(
-                OlhoLovepeople.olhinho_senha,
-                color: Color(0xFF3101B9),
-                size: 35,
-              ):
-              Icon(
-                OlhoLovepeople.olhinho_senha,
-                color: Colors.grey,
-                size: 35,
-              ),
-              onPressed: (){
-                setState((){
-                  isHiddenPassword = !isHiddenPassword;
-                });
-              }
-            ),
+                icon: _isHiddenPassword == true
+                    ? Icon(
+                        OlhoLovepeople.olhinho_senha,
+                        color: Color(0xFF3101B9),
+                        size: 35,
+                      )
+                    : Icon(
+                        OlhoLovepeople.olhinho_senha,
+                        color: Colors.grey,
+                        size: 35,
+                      ),
+                onPressed: () {
+                  setState(() {
+                    _isHiddenPassword = !_isHiddenPassword;
+                  });
+                }),
             hintStyle: TextStyle(
               fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
           maxLines: 1,
-          obscureText: isHiddenPassword,
+          obscureText: _isHiddenPassword,
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
             color: Color(0xFF3101B9),
           ),
-          controller: password,
+          controller: _password,
           validator: (value) {
-          if (value!.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Color(0xFF3101B9),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)
-            ),
-            behavior: SnackBarBehavior.floating,
-            content: Text(
-              'Senha é obrigatório!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "Tahoma",
-                fontSize: 14,
-              ),
-            )));
-          }
-          return null;
+            if (value!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: Color(0xFF3101B9),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'Senha é obrigatório!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 14,
+                    ),
+                  )));
+            }
+            return null;
           },
           onSaved: (value) {
-            password.text = value!;
+            _password.text = value!;
           }),
     );
   }
@@ -211,7 +199,7 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildCpasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 42,
       child: TextFormField(
           decoration: InputDecoration(
             filled: true,
@@ -222,87 +210,82 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Confirmar senha',
             suffixIcon: IconButton(
-              icon: isHiddenPassword == true ?
-              Icon(
-                OlhoLovepeople.olhinho_senha,
-                color: Color(0xFF3101B9),
-                size: 35,
-              ):
-              Icon(
-                OlhoLovepeople.olhinho_senha,
-                color: Colors.grey,
-                size: 35,
-              ),
-              onPressed: (){
-                setState((){
-                  isHiddenPassword = !isHiddenPassword;
-                });
-              }
-            ),            
+                icon: _isHiddenPassword == true
+                    ? Icon(
+                        OlhoLovepeople.olhinho_senha,
+                        color: Color(0xFF3101B9),
+                        size: 35,
+                      )
+                    : Icon(
+                        OlhoLovepeople.olhinho_senha,
+                        color: Colors.grey,
+                        size: 35,
+                      ),
+                onPressed: () {
+                  setState(() {
+                    _isHiddenPassword = !_isHiddenPassword;
+                  });
+                }),
             hintStyle: TextStyle(
               fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
               color: Color(0xFF3101B9),
               fontSize: 16,
-              height: 2.8,
+              height: 3,
             ),
           ),
           autofocus: true,
           maxLines: 1,
-          obscureText: isHiddenPassword,
+          obscureText: _isHiddenPassword,
           //obscuringCharacter: '*',
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
             color: Color(0xFF3101B9),
           ),
-          controller: cPassword,
+          controller: _cPassword,
           validator: (value) {
             if (value!.isEmpty) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Color(0xFF3101B9),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12)
-              ),
-              behavior: SnackBarBehavior.floating,
-              content: Text(
-                'Confirmar senha é obrigatório!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Tahoma",
-                  fontSize: 14,
-                ),
-              )));
+                  backgroundColor: Color(0xFF3101B9),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'Confirmar senha é obrigatório!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 14,
+                    ),
+                  )));
             }
-            if (value != password.text &&
-                password.text != '' &&
-                cPassword.text != '') {
+            if (value != _password.text &&_password.text != '' && _cPassword.text != '') {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Color(0xFF3101B9),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12)
-              ),
-              behavior: SnackBarBehavior.floating,
-              content: Text(
-                'As senhas não coincidem :(',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "Tahoma",
-                  fontSize: 14,
-                ),
-              )));
+                  backgroundColor: Color(0xFF3101B9),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'As senhas não coincidem :(',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 14,
+                    ),
+                  )));
             }
             return null;
           },
           onSaved: (value) {
-            cPassword.text = value!;
+            _cPassword.text = value!;
           }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(//* SafeArea() mantiene el menu superior con el color padrón (en mi caso, negro)
+    return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFA901F7),
         body: SingleChildScrollView(
@@ -326,12 +309,12 @@ class _RegisterUserState extends State<RegisterUser> {
                       ),
                     ),
                   ),
-                  _buildNameField(),
+                  _buildusernameField(),
                   _buildEmailField(),
                   _buildPasswordField(),
                   _buildCpasswordField(),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                     child: ElevatedButton(
                       child: Text(
                         'Cadastrar',
@@ -359,7 +342,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 70, 0,15), //* cambiar valor de T=100, caso elimine SafeArea()
+                    margin: EdgeInsets.fromLTRB(0, 70, 0, 15),
                     child: DotWidget(
                       dashColor: Colors.white,
                       totalWidth: 296,
@@ -398,69 +381,23 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 
-//! Uso exclusivo para la prueba de _formKey y Navigator
+// SafeArea() mantiene el menu superior con el color padrón (en mi caso, negro)
+// cambiar valor de T=100, caso elimine SafeArea()
 
-  void _registerNow(context) {
-    // if (_formKey.currentState!.validate()) {
-    //   _formKey.currentState!.save();
-    //   print(name.text);
-    //   print(email.text);
-    //   print(password.text);
-    //   print(cPassword.text);
-    //   if (name.text != '' &&
-    //       email.text != '' &&
-    //       password.text != '' &&
-    //       cPassword.text != '' &&
-    //       password.text == cPassword.text) {
-    //     Navigator.of(context)
-    //         .push(
-    //           MaterialPageRoute(
-    //             builder: (context) => Success(),
-    //           ),
-    //         )
-    //         .then((value) {});
-    //     _formKey.currentState!.reset();
-    //   }
-    // }
+  void _registerNow(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    }
+    if (_username.text != '' && _email.text != '' && _password.text != '' && _cPassword.text != '' && _password.text == _cPassword.text) {      
+      String username = _username.text;
+      String email = _email.text;
+      String password = _cPassword.text;
+      print("FORM OK! username: $username, email: $email, password: $password");
+      context.read<UserController>().registeruser(username, email, password, context);          
+    }    
   }
 
   void _registerOld(context) {
-    // Navigator.of(context).pop();
+    Navigator.of(context).popAndPushNamed('login');
   }
 }
-
-//! Uso exclusivo para la prueba de _formKey y Navigator
-
-// class Success extends StatelessWidget {
-//   const Success({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: Color(0xFFA901F7),
-//         body: SafeArea(
-//           child: Column(
-//             children: [
-//               Container(
-//                 margin: EdgeInsets.only(top: 180),
-//                 child: Center(
-//                   child: Text(
-//                     'JAJAJA... ;)',
-//                     style: GoogleFonts.montserrat(
-//                       textStyle: TextStyle(
-//                         fontWeight: FontWeight.w500,
-//                       ),
-//                       color: Colors.white,
-//                       fontSize: 25,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
