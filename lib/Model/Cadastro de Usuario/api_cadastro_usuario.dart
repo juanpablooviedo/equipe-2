@@ -100,14 +100,10 @@ class Role {
 }
 
 class Authentication {
-  var url =
-      Uri.parse('https://todo-lovepeople.herokuapp.com/auth/local/register');
-  Future<UserAuthentication> registeruser(
-      String username, String email, String password) async {
-    var response = await http.post(url,
-        body: {"username": username, "email": email, "password": password});
+  var url = Uri.parse('https://todo-lovepeople.herokuapp.com/auth/local/register');
+  Future<UserAuthentication> registeruser(String username, String email, String password) async {
+    var response = await http.post(url,body: {"username": username, "email": email, "password": password});
     var json = jsonDecode(response.body);
-
     if (response.statusCode == 200) {
       print('API OK! statusCode: ${response.statusCode}');
       return UserAuthentication.fromJson(json);

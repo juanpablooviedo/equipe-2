@@ -388,11 +388,7 @@ class _RegisterUserState extends State<RegisterUser> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
     }
-    if (_username.text != '' &&
-        _email.text != '' &&
-        _password.text != '' &&
-        _cPassword.text != '' &&
-        _password.text == _cPassword.text) {      
+    if (_username.text != '' && _email.text != '' && _password.text != '' && _cPassword.text != '' && _password.text == _cPassword.text) {      
       String username = _username.text;
       String email = _email.text;
       String password = _cPassword.text;
