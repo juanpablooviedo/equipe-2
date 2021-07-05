@@ -29,30 +29,35 @@ class _LoginAccessState extends State<LoginAccess> {
             margin: EdgeInsets.all(20.0),
             child: Column(children: [
               TextFormField(
-                  controller: _ctrlLogin,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Esse campo é obrigatório!';
-                    }
-                  },
-                  decoration: InputDecoration(
-                      hintText: "Número de telefone, email ou CPF",
-                      hintStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                        fontFamily: "Tahoma",
-                        color: Color(0xFF3101B9),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true)),
+                maxLines: 1,
+                minLines: 1,
+                controller: _ctrlLogin,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Esse campo é obrigatório!';
+                  }
+                },
+                decoration: InputDecoration(
+                    hintText: "Número de telefone, email ou CPF",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontFamily: "Tahoma",
+                      color: Color(0xFF3101B9),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true),
+              ),
               SizedBox(
                 height: 20,
               ),
               TextFormField(
+                maxLines: 1,
+                minLines: 1,
                 controller: _ctrlSenha,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -156,8 +161,10 @@ class _LoginAccessState extends State<LoginAccess> {
                     ),
                     Center(
                       child: Container(
-                        margin: EdgeInsets.all(20.0),
+                        margin: EdgeInsets.only(top: 10),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text("Não possui cadastro?",
                                 style: TextStyle(
