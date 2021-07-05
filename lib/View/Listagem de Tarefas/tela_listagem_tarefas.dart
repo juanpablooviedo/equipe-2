@@ -1,8 +1,9 @@
-import 'dart:convert';
 import 'dart:ui';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
+import 'package:todo_lovepeople/Model/shared/functions.dart';
+import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/listaWidget.dart';
 
 class TelaTarefas extends StatefulWidget {
@@ -13,80 +14,77 @@ class TelaTarefas extends StatefulWidget {
 }
 
 class _TelaTarefasState extends State<TelaTarefas> {
-  List<Tarefa> tarefas = [];
+  @override
+  void initState() {
+    postFrame(() {
+      context.read<ListaTarefaController>().getTasks("");
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Color(0xFFA901F7),
-      body: ListView(children: [
-        Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  alignment: Alignment(-1.0, -1.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(100),
-                    ),
-                    color: Color(0xFFFFFFFF),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 80,
+                width: 80,
+                alignment: Alignment(-1.0, -1.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(100),
                   ),
-                  padding: EdgeInsets.only(top: 10, left: 10),
-                  child: Image.asset(
-                    'assets/image/logo_lovepeople.png',
-                    height: 45,
-                    width: 45,
-                    fit: BoxFit.fill,
-                  ),
+                  color: Color(0xFFFFFFFF),
                 ),
-                SizedBox(
-                  width: 60,
+                padding: EdgeInsets.only(top: 10, left: 10),
+                child: Image.asset(
+                  'assets/image/logo_lovepeople.png',
+                  height: 45,
+                  width: 45,
+                  fit: BoxFit.fill,
                 ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Container(
-                      child: Text(
-                        "Suas Listagens",
-                        style: TextStyle(
-                          color: Color(0xFFFFFFFF),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: 'Montserrat-SemiBold',
-                        ),
+              ),
+              SizedBox(
+                width: 60,
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Container(
+                    child: Text(
+                      "Suas Listagens",
+                      style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Montserrat-SemiBold',
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            Column(
-              children: [
-                palavraChave(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                    left: 20,
-                    right: 20,
-                    bottom: 10,
-                  ),
-                  child: ListView.builder(
-                      itemCount: tarefas.length,
-                      itemBuilder: (context, index) {
-                        return TarefaWidget(
-                          tarefa: tarefas[index],
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ]),
+              ),
+            ],
+          ),
+          palavraChave(),
+          Consumer<ListaTarefaController>(builder: (_, controller, child) {
+            return Expanded(
+              child: ListView.builder(
+                  itemCount: controller.tarefasList.length,
+                  itemBuilder: (context, index) {
+                    return TarefaWidget(
+                      listatarefa: controller.tarefasList[index],
+                      ontap: () {},
+                    );
+                  }),
+            );
+          }),
+        ],
+      ),
       bottomNavigationBar: adicionarTarefa(context),
     ));
   }

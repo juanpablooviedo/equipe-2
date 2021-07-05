@@ -1,4 +1,4 @@
-class Tarefa {
+class ListaTarefa {
   int? id;
   String? title;
   String? description;
@@ -10,7 +10,7 @@ class Tarefa {
   String? createdAt;
   String? updatedAt;
 
-  Tarefa(
+  ListaTarefa(
       {this.id,
       this.title,
       this.description,
@@ -22,7 +22,7 @@ class Tarefa {
       this.createdAt,
       this.updatedAt});
 
-  Tarefa.fromJson(Map<String, dynamic> json) {
+  ListaTarefa.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     description = json['description'];

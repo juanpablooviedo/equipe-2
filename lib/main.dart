@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_lovepeople/Model/Cadastro%20de%20Tarefa/API_cadastro_tarefa.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/API_listagem_tarefas.dart';
 import 'package:todo_lovepeople/Model/Login/API_login.dart';
+import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/Presenter/login_controller.dart';
 import 'package:todo_lovepeople/Presenter/tarefa_controller.dart';
 import 'View/Cadastro de Tarefa/tela_cadastro_tarefa.dart';
@@ -25,9 +27,11 @@ class MyApp extends StatelessWidget {
           create: (_) => LoginController(Authentication()),
         ),
         ChangeNotifierProvider<TarefaController>(
-            create: (_) => TarefaController(TarefaApi())),
-        //Provider<SomethingElse>(create: (_) => SomethingElse()),
-        //Provider<AnotherThing>(create: (_) => AnotherThing()),
+          create: (_) => TarefaController(TarefaApi()),
+        ),
+        ChangeNotifierProvider<ListaTarefaController>(
+          create: (_) => ListaTarefaController(ListagemTarefaRepository()),
+        ),
       ],
       child: MaterialApp(
         initialRoute: "login",
