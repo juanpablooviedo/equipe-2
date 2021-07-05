@@ -21,10 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-<<<<<<< HEAD
-        Provider<LoginController>(
-            create: (_) => LoginController(Authentication())),
-=======
         ChangeNotifierProvider<LoginController>(
           create: (_) => LoginController(Authentication()),
         ),
@@ -32,7 +28,6 @@ class MyApp extends StatelessWidget {
             create: (_) => TarefaController(TarefaApi())),
         //Provider<SomethingElse>(create: (_) => SomethingElse()),
         //Provider<AnotherThing>(create: (_) => AnotherThing()),
->>>>>>> feature/anita/api/cadastroDeTarefa
       ],
       child: MaterialApp(
         initialRoute: "login",

@@ -1,8 +1,4 @@
 import 'dart:convert';
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/anita/api/cadastroDeTarefa
 import 'package:http/http.dart' as http;
 import 'package:todo_lovepeople/Model/Login/login.dart';
 
