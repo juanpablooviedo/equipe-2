@@ -130,34 +130,49 @@ class _LoginAccessState extends State<LoginAccess> {
                       height: 30,
                     ),
                     Container(
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _clickButton(context);
-                          },
-                          child: Text(
-                            "Entrar",
-                            style: TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Montserrat-SemiBold"),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xFF3101B9)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      side: BorderSide(
-                                          color: Colors.white, width: 2)))),
-                        )),
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _clickButton(context);
+                        },
+                        child: Text(
+                          "Entrar",
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Montserrat-SemiBold"),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFF3101B9)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2)))),
+                      ),
+                    ),
                     SizedBox(
                       height: 20,
                     ),
-                    DotWidget(
-                      dashColor: Colors.white,
-                      dashHeight: 1.9,
-                      dashWidth: 1.5,
+                    Container(
+                      height: 10,
+                      width: double.infinity,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                        ],
+                      ),
                     ),
                     Center(
                       child: Container(
