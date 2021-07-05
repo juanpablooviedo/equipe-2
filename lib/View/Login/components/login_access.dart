@@ -35,6 +35,12 @@ class _LoginAccessState extends State<LoginAccess> {
                       return 'Esse campo é obrigatório!';
                     }
                   },
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    fontFamily: "Tahoma",
+                    color: Color(0xFF3101B9),
+                  ),
                   decoration: InputDecoration(
                       hintText: "Número de telefone, email ou CPF",
                       hintStyle: TextStyle(
@@ -59,6 +65,13 @@ class _LoginAccessState extends State<LoginAccess> {
                     return 'Esse campo é obrigatório!';
                   }
                 },
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 20,
+                  fontFamily: "Tahoma",
+                  color: Color(0xFF3101B9),
+                ),
                 decoration: InputDecoration(
                   hintText: "Senha",
                   hintStyle: TextStyle(
