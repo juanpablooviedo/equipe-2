@@ -18,10 +18,12 @@ class _RegisterUserState extends State<RegisterUser> {
 
   Widget _buildNameField() {
     return Container(
-      margin: EdgeInsets.fromLTRB(30, 20, 30, 12),
-      height: 38,
+      margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
+      height: 80,
       child: TextFormField(
           decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.white.withOpacity(1),
             border: OutlineInputBorder(
@@ -30,11 +32,11 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Nome',
             hintStyle: TextStyle(
-              fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.normal,
+              fontSize: 20,
+              fontFamily: "Tahoma",
               color: Color(0xFF3101B9),
-              fontSize: 16,
-              height: 2.8,
             ),
           ),
           autofocus: true,
@@ -43,6 +45,9 @@ class _RegisterUserState extends State<RegisterUser> {
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+            fontFamily: "Tahoma",
             color: Color(0xFF3101B9),
           ),
           controller: name,
@@ -72,9 +77,10 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildEmailField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 80,
       child: TextFormField(
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.white.withOpacity(1),
             border: OutlineInputBorder(
@@ -83,11 +89,11 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Número de telefone, email ou CPF',
             hintStyle: TextStyle(
-              fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.normal,
+              fontSize: 20,
+              fontFamily: "Tahoma",
               color: Color(0xFF3101B9),
-              fontSize: 16,
-              height: 2.8,
             ),
           ),
           autofocus: true,
@@ -95,6 +101,9 @@ class _RegisterUserState extends State<RegisterUser> {
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+            fontFamily: "Tahoma",
             color: Color(0xFF3101B9),
           ),
           controller: email,
@@ -124,9 +133,10 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildPasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 80,
       child: TextFormField(
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.white.withOpacity(1),
             border: OutlineInputBorder(
@@ -135,11 +145,11 @@ class _RegisterUserState extends State<RegisterUser> {
             ),
             hintText: 'Senha',
             hintStyle: TextStyle(
-              fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.normal,
+              fontSize: 20,
+              fontFamily: "Tahoma",
               color: Color(0xFF3101B9),
-              fontSize: 16,
-              height: 2.8,
             ),
             suffixIcon: Icon(
               MyFlutterApp.olhinho_senha_inicio,
@@ -154,6 +164,9 @@ class _RegisterUserState extends State<RegisterUser> {
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+            fontFamily: "Tahoma",
             color: Color(0xFF3101B9),
           ),
           controller: password,
@@ -183,9 +196,10 @@ class _RegisterUserState extends State<RegisterUser> {
   Widget _buildCpasswordField() {
     return Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-      height: 38,
+      height: 80,
       child: TextFormField(
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             filled: true,
             fillColor: Colors.white.withOpacity(1),
             border: OutlineInputBorder(
@@ -199,11 +213,11 @@ class _RegisterUserState extends State<RegisterUser> {
               size: 35,
             ),
             hintStyle: TextStyle(
-              fontFamily: "Tahoma",
               fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.normal,
+              fontSize: 20,
+              fontFamily: "Tahoma",
               color: Color(0xFF3101B9),
-              fontSize: 16,
-              height: 2.8,
             ),
           ),
           autofocus: true,
@@ -213,6 +227,9 @@ class _RegisterUserState extends State<RegisterUser> {
           cursorColor: Color(0xFF3101B9),
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+            fontFamily: "Tahoma",
             color: Color(0xFF3101B9),
           ),
           controller: cPassword,
@@ -258,94 +275,111 @@ class _RegisterUserState extends State<RegisterUser> {
     return SafeArea(
       // mantiene el menu superior con el color padrón (en mi caso, negro) //
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Color(0xFFA901F7),
-        body: SingleChildScrollView(
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 180),
+        body: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 180),
+                  child: Text(
+                    'Vamos começar!',
+                    style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                      color: Colors.white.withOpacity(1),
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+                Expanded(child: _buildNameField()),
+                Expanded(child: _buildEmailField()),
+                Expanded(child: _buildPasswordField()),
+                Expanded(child: _buildCpasswordField()),
+                SizedBox(
+                  height: 60,
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
+                  child: ElevatedButton(
                     child: Text(
-                      'Vamos começar!',
+                      'Cadastrar',
                       style: GoogleFonts.montserrat(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w500,
                         ),
                         color: Colors.white.withOpacity(1),
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
-                  ),
-                  _buildNameField(),
-                  _buildEmailField(),
-                  _buildPasswordField(),
-                  _buildCpasswordField(),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 30),
-                    child: ElevatedButton(
-                      child: Text(
-                        'Cadastrar',
-                        style: GoogleFonts.montserrat(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                          ),
-                          color: Colors.white.withOpacity(1),
-                          fontSize: 20,
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFF3101B9)),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide(color: Colors.white, width: 1),
                         ),
                       ),
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Color(0xFF3101B9)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            side: BorderSide(color: Colors.white, width: 1),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacementNamed("sucesso");
-                      },
                     ),
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed("sucesso");
+                    },
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 70, 0,
-                        15), // cambiar valor de T=100, caso elimine SafeArea()
-                    child: DotWidget(
-                      dashColor: Colors.white,
-                      totalWidth: 296,
-                      dashHeight: 1,
-                      dashWidth: 3,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                // cambiar valor de T=100, caso elimine SafeArea()
+                Container(
+                  height: 10,
+                  width: double.infinity,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: [
-                      Text("Já possui cadastro?",
-                          style: TextStyle(
-                            fontFamily: "Tahoma",
-                            fontSize: 16,
-                            color: Colors.white,
-                          )),
-                      TextButton(
-                        child: Text("Entrar",
-                            style: TextStyle(
-                              fontFamily: "Tahoma",
-                              fontSize: 16,
-                              color: Color(0xFFFFD600),
-                            )),
-                        onPressed: () {
-                          Navigator.of(context).pushReplacementNamed("login");
-                        },
+                      DotWidget(
+                        dashColor: Colors.white,
+                        dashHeight: 1.9,
+                        dashWidth: 1.5,
+                      ),
+                      DotWidget(
+                        dashColor: Colors.white,
+                        dashHeight: 1.9,
+                        dashWidth: 1.5,
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Já possui cadastro?",
+                        style: TextStyle(
+                          fontFamily: "Tahoma",
+                          fontSize: 16,
+                          color: Colors.white,
+                        )),
+                    TextButton(
+                      child: Text("Entrar",
+                          style: TextStyle(
+                            fontFamily: "Tahoma",
+                            fontSize: 16,
+                            color: Color(0xFFFFD600),
+                          )),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed("login");
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
