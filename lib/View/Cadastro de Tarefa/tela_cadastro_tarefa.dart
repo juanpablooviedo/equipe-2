@@ -216,42 +216,35 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
               SizedBox(
                 height: 60,
               ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.close_rounded,
-                        size: 100,
-                      ),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+              Row(
+                children: [
+                  IconButton(
+                    alignment: Alignment.centerLeft,
+                    icon: Icon(
+                      Icons.close_rounded,
+                      size: 100,
                     ),
-                    SizedBox(
-                      width: 140,
-                      height: 100,
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  IconButton(
+                    alignment: Alignment.center,
+                    icon: Icon(
+                      Icons.check_rounded,
+                      size: 100,
                     ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.check_rounded,
-                        size: 100,
-                      ),
-                      color: Colors.white,
-                      onPressed: () {
-                        print('ONPRESSED');
-                        _clickButton(context);
-                      },
-                    ),
-                    SizedBox(
-                      width: 80,
-                      height: 100,
-                    ),
-                  ],
-                ),
+                    color: Colors.white,
+                    onPressed: () {
+                      print('ONPRESSED');
+                      _clickButton(context);
+                    },
+                  ),
+                ],
               ),
             ],
           ),

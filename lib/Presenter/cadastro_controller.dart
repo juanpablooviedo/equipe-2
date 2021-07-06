@@ -9,7 +9,6 @@ class RegisterController extends ChangeNotifier {
 
   void register(String name, String email, String password,
       {VoidCallback? onSuccess, VoidCallback? onFailure}) {
-    _showProgress(true);
     _repository.register(name, email, password).then((value) {
       if (value != null) {
         onSuccess?.call();
@@ -18,21 +17,6 @@ class RegisterController extends ChangeNotifier {
       }
     }).catchError((e) {
       onFailure?.call();
-    }).whenComplete(() {
-      _showProgress(false);
-    });
+    }).whenComplete(() {});
   }
-
-  void _showProgress(bool show) {
-    postFrame(() {
-      loading = true;
-      notifyListeners();
-    });
-  }
-}
-
-void postFrame(Function execute) {
-  Future.delayed(Duration.zero, () {
-    execute();
-  });
 }

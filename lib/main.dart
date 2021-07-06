@@ -6,7 +6,6 @@ import 'package:todo_lovepeople/Model/Cadastro%20de%20Usuario/API_cadastro_usuar
 import 'package:todo_lovepeople/Model/Login/API_login.dart';
 import 'package:todo_lovepeople/Presenter/cadastro_controller.dart';
 import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/API_listagem_tarefas.dart';
-
 import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/Presenter/login_controller.dart';
 import 'package:todo_lovepeople/Presenter/tarefa_controller.dart';
