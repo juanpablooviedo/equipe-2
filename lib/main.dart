@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             create: (_) => RegisterController(UserRepository())),
       ],
       child: MaterialApp(
-        initialRoute: "telaCadastro",
+        initialRoute: "login",
         routes: {
           "login": (context) => LoginPage(),
           "telaCadastro": (context) => RegisterUser(),
