@@ -7,11 +7,22 @@ class ListaTarefaController extends ChangeNotifier {
 
   ListaTarefaController(this._api);
   List<ListaTarefa> tarefasList = [];
+  List<ListaTarefa> _originalList = [];
 
   void getTasks(String title, {BuildContext? context}) async {
     print('CONTROLLER');
     var response = await _api.getTasks(title);
     tarefasList.addAll(response);
+    _originalList.addAll(response);
+    notifyListeners();
+  }
+
+  void filter(String keyWord) {
+    tarefasList = _originalList
+        .where((element) =>
+            element.title!.contains(keyWord) ||
+            element.description!.contains(keyWord))
+        .toList();
     notifyListeners();
   }
 }

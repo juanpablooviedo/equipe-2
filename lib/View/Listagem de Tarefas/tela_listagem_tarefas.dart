@@ -27,52 +27,52 @@ class _TelaTarefasState extends State<TelaTarefas> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Color(0xFFA901F7),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                height: 80,
-                width: 80,
-                alignment: Alignment(-1.0, -1.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(100),
+      body: Consumer<ListaTarefaController>(builder: (_, controller, child) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: 80,
+                  width: 80,
+                  alignment: Alignment(-1.0, -1.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(100),
+                    ),
+                    color: Color(0xFFFFFFFF),
                   ),
-                  color: Color(0xFFFFFFFF),
+                  padding: EdgeInsets.only(top: 10, left: 10),
+                  child: Image.asset(
+                    'assets/image/logo_lovepeople.png',
+                    height: 45,
+                    width: 45,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-                padding: EdgeInsets.only(top: 10, left: 10),
-                child: Image.asset(
-                  'assets/image/logo_lovepeople.png',
-                  height: 45,
-                  width: 45,
-                  fit: BoxFit.fill,
+                SizedBox(
+                  width: 60,
                 ),
-              ),
-              SizedBox(
-                width: 60,
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Container(
-                    child: Text(
-                      "Suas Listagens",
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontFamily: 'Montserrat-SemiBold',
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Container(
+                      child: Text(
+                        "Suas Listagens",
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'Montserrat-SemiBold',
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          palavraChave(),
-          Consumer<ListaTarefaController>(builder: (_, controller, child) {
-            return Expanded(
+              ],
+            ),
+            palavraChave(controller),
+            Expanded(
               child: ListView.builder(
                   itemCount: controller.tarefasList.length,
                   itemBuilder: (context, index) {
@@ -81,10 +81,10 @@ class _TelaTarefasState extends State<TelaTarefas> {
                       ontap: () {},
                     );
                   }),
-            );
-          }),
-        ],
-      ),
+            ),
+          ],
+        );
+      }),
       bottomNavigationBar: adicionarTarefa(context),
     ));
   }
@@ -102,7 +102,7 @@ class _TelaTarefasState extends State<TelaTarefas> {
     );
   }
 
-  Padding palavraChave() {
+  Padding palavraChave(ListaTarefaController controller) {
     return Padding(
       padding: const EdgeInsets.only(
         top: 30,
@@ -110,6 +110,9 @@ class _TelaTarefasState extends State<TelaTarefas> {
         right: 20,
       ),
       child: TextField(
+        onChanged: (text) {
+          controller.filter(text);
+        },
         decoration: InputDecoration(
           suffixIcon: Icon(
             Icons.search,

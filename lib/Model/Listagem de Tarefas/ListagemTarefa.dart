@@ -29,10 +29,6 @@ class ListaTarefa {
     completed = json['completed'];
     color = json['color'];
     publishedAt = json['published_at'];
-    createdBy = json['created_by'];
-    updatedBy = json['updated_by'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
