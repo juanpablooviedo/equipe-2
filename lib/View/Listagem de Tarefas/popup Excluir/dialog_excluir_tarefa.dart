@@ -34,9 +34,11 @@ Widget excluir(BuildContext context) {
         ),
       ),
       TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
         child: Text(
-          "Excluir",
+          "Cancelar",
           style: TextStyle(
             color: Color(0xFFA901F7),
             fontWeight: FontWeight.normal,
