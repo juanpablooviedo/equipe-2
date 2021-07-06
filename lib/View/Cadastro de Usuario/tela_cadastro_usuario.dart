@@ -59,19 +59,7 @@ class _RegisterUserState extends State<RegisterUser> {
             controller: _username,
             validator: (value) {
               if (value!.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    backgroundColor: Color(0xFF3101B9),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    behavior: SnackBarBehavior.floating,
-                    content: Text(
-                      'Telefone, email ou CPF é obrigatório!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Tahoma",
-                        fontSize: 14,
-                      ),
-                    )));
+                return 'Esse campo é obrigatório!';
               }
               return null;
             },
@@ -119,19 +107,7 @@ class _RegisterUserState extends State<RegisterUser> {
             controller: _email,
             validator: (value) {
               if (value!.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    backgroundColor: Color(0xFF3101B9),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    behavior: SnackBarBehavior.floating,
-                    content: Text(
-                      'Telefone, email ou CPF é obrigatório!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Tahoma",
-                        fontSize: 14,
-                      ),
-                    )));
+                return 'Esse campo é obrigatório!';
               }
               return null;
             },
@@ -146,7 +122,7 @@ class _RegisterUserState extends State<RegisterUser> {
     return Consumer<RegisterController>(builder: (context, controller, _) {
       return Container(
         margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-        height: 42,
+        height: 47,
         child: TextFormField(
             decoration: InputDecoration(
               contentPadding:
@@ -177,7 +153,7 @@ class _RegisterUserState extends State<RegisterUser> {
                       });
                     }),
                 padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                margin: EdgeInsets.all(4),
+                margin: EdgeInsets.all(1),
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Color(0xFF3101B9)),
                     borderRadius:
@@ -205,19 +181,7 @@ class _RegisterUserState extends State<RegisterUser> {
             controller: _password,
             validator: (value) {
               if (value!.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    backgroundColor: Color(0xFF3101B9),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    behavior: SnackBarBehavior.floating,
-                    content: Text(
-                      'Senha é obrigatório!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Tahoma",
-                        fontSize: 14,
-                      ),
-                    )));
+                return 'Esse campo é obrigatório!';
               }
               return null;
             },
@@ -234,7 +198,7 @@ class _RegisterUserState extends State<RegisterUser> {
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(30, 0, 30, 12),
-            height: 45,
+            height: 47,
             child: TextFormField(
                 decoration: InputDecoration(
                   contentPadding:
@@ -265,7 +229,7 @@ class _RegisterUserState extends State<RegisterUser> {
                           });
                         }),
                     padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
-                    margin: EdgeInsets.all(2),
+                    margin: EdgeInsets.all(1),
                     decoration: BoxDecoration(
                         border: Border.all(width: 1, color: Color(0xFF3101B9)),
                         borderRadius:
@@ -360,82 +324,82 @@ class _RegisterUserState extends State<RegisterUser> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFA901F7),
       body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Form(
-            key: _formKey,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 180),
-                    child: Text(
-                      'Vamos começar!',
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w500,
-                        ),
-                        color: Colors.white.withOpacity(1),
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Expanded(child: _buildUserlField(context)),
-                  Expanded(child: _buildEmailField(context)),
-                  Expanded(child: _buildPasswordField(context)),
-                  Expanded(child: _buildCpasswordField(context)),
-                  SizedBox(
-                    height: 300,
-                  ),
-                  Container(
-                    height: 10,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        DotWidget(
-                          dashColor: Colors.white,
-                          dashHeight: 1.9,
-                          dashWidth: 1.5,
-                        ),
-                        DotWidget(
-                          dashColor: Colors.white,
-                          dashHeight: 1.9,
-                          dashWidth: 1.5,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Já possui cadastro?",
-                          style: TextStyle(
-                            fontFamily: "Tahoma",
-                            fontSize: 16,
-                            color: Colors.white,
-                          )),
-                      TextButton(
-                        child: Text("Entrar",
-                            style: TextStyle(
-                              fontFamily: "Tahoma",
-                              fontSize: 16,
-                              color: Color(0xFFFFD600),
-                            )),
-                        onPressed: () {
-                          Navigator.of(context).pushReplacementNamed("login");
-                        },
-                      ),
-                    ],
-                  ),
-                ],
+        child: SafeArea(
+          child: Column(children: [
+            SizedBox(
+              height: 70,
+            ),
+            Text(
+              'Vamos começar!',
+              style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+                color: Colors.white.withOpacity(1),
+                fontSize: 25,
               ),
             ),
-          ),
+            SizedBox(
+              height: 20,
+            ),
+            Form(
+              key: _formKey,
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    _buildUserlField(context),
+                    _buildEmailField(context),
+                    _buildPasswordField(context),
+                    _buildCpasswordField(context),
+                    SizedBox(
+                      height: 300,
+                    ),
+                    Container(
+                      height: 10,
+                      width: double.infinity,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                          DotWidget(
+                            dashColor: Colors.white,
+                            dashHeight: 1.9,
+                            dashWidth: 1.5,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Já possui cadastro?",
+                    style: TextStyle(
+                      fontFamily: "Tahoma",
+                      fontSize: 16,
+                      color: Colors.white,
+                    )),
+                TextButton(
+                  child: Text("Entrar",
+                      style: TextStyle(
+                        fontFamily: "Tahoma",
+                        fontSize: 16,
+                        color: Color(0xFFFFD600),
+                      )),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed("login");
+                  },
+                ),
+              ],
+            ),
+          ]),
         ),
       ),
     );
@@ -464,46 +428,3 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 }
-
-
-// SafeArea() mantiene el menu superior con el color padrón (en mi caso, negro)
-// cambiar valor de T=100, caso elimine SafeArea()
-
-// class Success extends StatelessWidget {
-//   const Success({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: Color(0xFFA901F7),
-//         body: SafeArea(
-//           child: Column(
-//             children: [
-//               Container(
-//                 margin: EdgeInsets.only(top: 180),
-//                 child: Center(
-//                   child: Text(
-//                     'Cadastro Concluído!',
-//                     style: GoogleFonts.montserrat(
-//                       textStyle: TextStyle(
-//                         fontWeight: FontWeight.w500,
-//                       ),
-//                       color: Colors.white,
-//                       fontSize: 25,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// }
-
-// }
-
