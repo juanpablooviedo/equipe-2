@@ -192,7 +192,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: 20,
               ),
               Center(
                 child: Container(
@@ -218,6 +218,8 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                         onPressed: () {
                           print('ONPRESSED');
                           _clickButton(context);
+                          Navigator.pushReplacementNamed(
+                              context, 'listaTarefa');
                         },
                       ),
                     ],
