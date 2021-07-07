@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
+
 import 'package:todo_lovepeople/Model/shared/functions.dart';
 import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/listaWidget.dart';
