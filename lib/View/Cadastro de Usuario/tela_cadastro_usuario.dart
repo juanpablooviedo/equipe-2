@@ -385,14 +385,18 @@ class _RegisterUserState extends State<RegisterUser> {
 // cambiar valor de T=100, caso elimine SafeArea()
 
   void _registerNow(BuildContext context) {
+
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
     }
-    if (_username.text != '' && _email.text != '' && _password.text != '' && _cPassword.text != '' && _password.text == _cPassword.text) {      
+
+    if (_username.text != '' && _email.text != '' && _password.text != '' && _cPassword.text != '' && _password.text == _cPassword.text) {   
+         
       String username = _username.text;
       String email = _email.text;
       String password = _cPassword.text;
-      print("FORM OK! username: $username, email: $email, password: $password");
+
+      print("FORMULARIO OK! nome de ususário: $username, email: $email, senha: $password");
       context.read<UserController>().registeruser(username, email, password, context);          
     }    
   }
