@@ -108,18 +108,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                     controller: _ctrlTitle,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Container(
-                          height: 25,
-                          alignment: Alignment.center,
-                          child: Text(
-                            'O campo do título é obrigatório!',
-                            style: TextStyle(
-                              fontFamily: "Tahoma",
-                              fontSize: 14,
-                            ),
-                          ),
-                        )));
+                        return 'Esse campo é obrigatório!';
                       }
                     },
                     style: TextStyle(
@@ -129,7 +118,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                     ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
-                      hintText: 'Título da Tarefa',
+                      hintText: 'Titulo da Tarefa',
                       hintStyle: TextStyle(
                         color: Color(0xFF3101B9),
                       ),
@@ -158,18 +147,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                     controller: _ctrlDescription,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Container(
-                          height: 25,
-                          alignment: Alignment.center,
-                          child: Text(
-                            'O campo da descrição é obrigatório!',
-                            style: TextStyle(
-                              fontFamily: "Tahoma",
-                              fontSize: 14,
-                            ),
-                          ),
-                        )));
+                        return 'Esse campo é obrigatório!';
                       }
                     },
                     style: TextStyle(
@@ -179,7 +157,7 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                     ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
-                      hintText: 'Escreva uma descrição para sua tarefa.',
+                      hintText: 'Escreva uma descirção para sua tarefa.',
                       hintStyle: TextStyle(
                         color: Color.fromRGBO(49, 1, 185, 1).withOpacity(.5),
                       ),
@@ -214,37 +192,39 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: 20,
               ),
-              Row(
-                children: [
-                  IconButton(
-                    alignment: Alignment.centerLeft,
-                    icon: Icon(
-                      Icons.close_rounded,
-                      size: 100,
-                    ),
-                    color: Colors.white,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+              Center(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          size: 100,
+                        ),
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.check,
+                          size: 100,
+                        ),
+                        color: Colors.white,
+                        onPressed: () {
+                          print('ONPRESSED');
+                          _clickButton(context);
+                          Navigator.pushReplacementNamed(
+                              context, 'listaTarefa');
+                        },
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  IconButton(
-                    alignment: Alignment.center,
-                    icon: Icon(
-                      Icons.check_rounded,
-                      size: 100,
-                    ),
-                    color: Colors.white,
-                    onPressed: () {
-                      print('ONPRESSED');
-                      _clickButton(context);
-                    },
-                  ),
-                ],
+                ),
               ),
             ],
           ),

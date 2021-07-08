@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:todo_lovepeople/Model/shared/functions.dart';
 import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/listaWidget.dart';
-import 'package:todo_lovepeople/View/Listagem%20de%20Tarefas/popup%20Excluir/dialog_excluir_tarefa.dart';
 
 class TelaTarefas extends StatefulWidget {
   const TelaTarefas({Key? key}) : super(key: key);
@@ -15,52 +14,6 @@ class TelaTarefas extends StatefulWidget {
 }
 
 class _TelaTarefasState extends State<TelaTarefas> {
-  Widget task(String descricao, String titulo, int color) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: 10,
-        left: 10,
-        right: 10,
-      ),
-      child: Card(
-        color: Color(color),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: ListTile(
-          title: Text(
-            titulo,
-            style: TextStyle(
-              color: Color(0xFF3101B9),
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              fontFamily: 'Montserrat-SemiBold',
-            ),
-          ),
-          subtitle: Text(
-            descricao,
-            style: TextStyle(
-              color: Color(0xFF3101B9).withOpacity(.5),
-              fontSize: 17,
-              fontFamily: 'Tahoma',
-            ),
-          ),
-          trailing: Icon(
-            Icons.delete_outline_outlined,
-            color: Color(0xFF3101B9),
-            size: 40,
-          ),
-          onTap: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => excluir(context),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
   @override
   void initState() {
     postFrame(() {

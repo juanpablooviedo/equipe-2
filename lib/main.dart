@@ -10,6 +10,7 @@ import 'package:todo_lovepeople/Model/Login/API_login.dart';
 import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/API_listagem_tarefas.dart';
 
 import 'package:todo_lovepeople/Presenter/controller_cadastro_usuario.dart';
+import 'package:todo_lovepeople/Model/Remover%20Item/API_remover_item.dart';
 import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 import 'package:todo_lovepeople/Presenter/login_controller.dart';
 import 'package:todo_lovepeople/Presenter/tarefa_controller.dart';
@@ -37,8 +38,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TarefaController>(
             create: (_) => TarefaController(TarefaApi())),
         ChangeNotifierProvider<ListaTarefaController>(
-          create: (_) => ListaTarefaController(ListagemTarefaRepository()),
-          //Provider<SomethingElse>(create: (_) => SomethingElse()),
+          create: (_) => ListaTarefaController(
+              ListagemTarefaRepository(), DeleteItemRepository()),
         ),
       ],
       child: MaterialApp(
