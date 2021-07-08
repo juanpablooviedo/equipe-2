@@ -143,23 +143,31 @@ class _RegisterUserState extends State<RegisterUser> {
                 borderRadius: BorderRadius.circular(10),
               ),
               hintText: 'Senha',
-              suffixIcon: IconButton(
-                  icon: _isHiddenPassword == true
-                      ? Icon(
-                          OlhoLovepeople.olhinho_senha,
-                          color: Color(0xFF3101B9),
-                          size: 35,
-                        )
-                      : Icon(
-                          OlhoLovepeople.olhinho_senha,
-                          color: Colors.grey,
-                          size: 35,
-                        ),
-                  onPressed: () {
-                    setState(() {
-                      _isHiddenPassword = !_isHiddenPassword;
-                    });
-                  }),
+              suffixIcon: Container(
+                child: IconButton(
+                    icon: _isHiddenPassword == true
+                        ? Icon(
+                            OlhoLovepeople.olhinho_senha,
+                            color: Color(0xFF3101B9),
+                            size: 35,
+                          )
+                        : Icon(
+                            OlhoLovepeople.olhinho_senha,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                    onPressed: () {
+                      setState(() {
+                        _isHiddenPassword = !_isHiddenPassword;
+                      });
+                    }),
+                padding: EdgeInsets.fromLTRB(0.10, 0.10, 0.10, 0.10),
+                margin: EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Color(0xFF3101B9)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(200))),
+              ),
               hintStyle: TextStyle(
                 fontFamily: "Tahoma",
                 fontWeight: FontWeight.w500,
@@ -216,23 +224,31 @@ class _RegisterUserState extends State<RegisterUser> {
                 borderRadius: BorderRadius.circular(10),
               ),
               hintText: 'Confirmar senha',
-              suffixIcon: IconButton(
-                  icon: _isHiddenPassword == true
-                      ? Icon(
-                          OlhoLovepeople.olhinho_senha,
-                          color: Color(0xFF3101B9),
-                          size: 35,
-                        )
-                      : Icon(
-                          OlhoLovepeople.olhinho_senha,
-                          color: Colors.grey,
-                          size: 35,
-                        ),
-                  onPressed: () {
-                    setState(() {
-                      _isHiddenPassword = !_isHiddenPassword;
-                    });
-                  }),
+              suffixIcon: Container(
+                child: IconButton(
+                    icon: _isHiddenPassword == true
+                        ? Icon(
+                            OlhoLovepeople.olhinho_senha,
+                            color: Color(0xFF3101B9),
+                            size: 35,
+                          )
+                        : Icon(
+                            OlhoLovepeople.olhinho_senha,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                    onPressed: () {
+                      setState(() {
+                        _isHiddenPassword = !_isHiddenPassword;
+                      });
+                    }),
+                padding: EdgeInsets.fromLTRB(0.10, 0.10, 0.10, 0.10),
+                margin: EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Color(0xFF3101B9)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(200))),
+              ),
               hintStyle: TextStyle(
                 fontFamily: "Tahoma",
                 fontWeight: FontWeight.w500,
@@ -351,13 +367,26 @@ class _RegisterUserState extends State<RegisterUser> {
                       },
                     ),
                   ),
+                  SizedBox(
+                    height: 150,
+                  ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 70, 0, 15),
-                    child: DotWidget(
-                      dashColor: Colors.white,
-                      totalWidth: 296,
-                      dashHeight: 1,
-                      dashWidth: 3,
+                    height: 10,
+                    width: double.infinity,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        DotWidget(
+                          dashColor: Colors.white,
+                          dashHeight: 1.9,
+                          dashWidth: 1.5,
+                        ),
+                        DotWidget(
+                          dashColor: Colors.white,
+                          dashHeight: 1.9,
+                          dashWidth: 1.5,
+                        ),
+                      ],
                     ),
                   ),
                   Row(
