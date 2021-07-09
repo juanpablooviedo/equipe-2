@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
 import 'package:todo_lovepeople/Utils/globals.dart' as globals;
 
 class ListagemTarefaRepository {

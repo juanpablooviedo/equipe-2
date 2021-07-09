@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
 import 'package:todo_lovepeople/Presenter/lista_controler.dart';
 
 class TarefaWidget extends StatelessWidget {

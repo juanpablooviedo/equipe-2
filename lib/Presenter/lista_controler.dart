@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/API_listagem_tarefas.dart';
-import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/listagemTarefa.dart';
+import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
 import 'package:todo_lovepeople/Model/Remover%20Item/API_remover_item.dart';
 
 class ListaTarefaController extends ChangeNotifier {
