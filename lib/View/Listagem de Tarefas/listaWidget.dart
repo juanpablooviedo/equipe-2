@@ -14,6 +14,8 @@ class TarefaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ListaTarefaController>(builder: (context, controller, _) {
       return Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         color: Color(int.parse(listatarefa.color!)),
         margin: EdgeInsets.all(20),
         child: ListTile(
