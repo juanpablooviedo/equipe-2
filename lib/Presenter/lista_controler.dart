@@ -13,8 +13,10 @@ class ListaTarefaController extends ChangeNotifier {
   List<ListaTarefa> _originalList = [];
 
   void getTasks(String title, {BuildContext? context}) async {
-    print('CONTROLLER');
+    print('CONTROLLER carergar tarefa');
     var response = await _api.getTasks(title);
+    _originalList.clear();
+    tarefasList.clear();
     tarefasList.addAll(response);
     _originalList.addAll(response);
     notifyListeners();
@@ -29,10 +31,10 @@ class ListaTarefaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteItem(ListaTarefa _originalList) {
-    delete.deleteItem(_originalList.id).then((value) {
-      if (value == null) {
-        tarefasList.remove(_originalList);
+  void deleteItem(ListaTarefa listaTarefa) {
+    delete.deleteItem(listaTarefa.id).then((response) {
+      if (response != null) {
+        tarefasList.remove(listaTarefa);
         notifyListeners();
       }
     });
