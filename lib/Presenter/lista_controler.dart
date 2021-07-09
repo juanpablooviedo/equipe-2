@@ -5,23 +5,23 @@ import 'package:todo_lovepeople/Model/Remover%20Item/API_remover_item.dart';
 
 class ListaTarefaController extends ChangeNotifier {
   final ListagemTarefaRepository _api;
-  final DeleteItemRepository delete;
+  final DeleteItemRepository _delete;
 
-  ListaTarefaController(this._api, this.delete);
+  ListaTarefaController(this._api, this._delete);
 
   List<ListaTarefa> tarefasList = [];
-  List<ListaTarefa> _originalList = [];
+  List<ListaTarefa> originalList = [];
 
   void getTasks(String title, {BuildContext? context}) async {
     print('CONTROLLER');
     var response = await _api.getTasks(title);
     tarefasList.addAll(response);
-    _originalList.addAll(response);
+    originalList.addAll(response);
     notifyListeners();
   }
 
   void filter(String keyWord) {
-    tarefasList = _originalList
+    tarefasList = originalList
         .where((element) =>
             element.title!.contains(keyWord) ||
             element.description!.contains(keyWord))
@@ -29,10 +29,11 @@ class ListaTarefaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteItem(ListaTarefa _originalList) {
-    delete.deleteItem(_originalList.id).then((value) {
+  void deleteItem(ListaTarefa list) {
+    _delete.deleteItem(list.id).then((value) {
       if (value == null) {
-        tarefasList.remove(_originalList);
+        tarefasList.remove(list);
+        originalList.remove(list);
         notifyListeners();
       }
     });

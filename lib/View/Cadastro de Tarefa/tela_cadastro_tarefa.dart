@@ -234,10 +234,6 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
   }
 
   void _clickButton(BuildContext context) {
-    bool formOk = _formKey.currentState!.validate();
-    if (!formOk) {
-      return;
-    }
     String title = _ctrlTitle.text;
     String description = _ctrlDescription.text;
     String color = _ctrlColor;

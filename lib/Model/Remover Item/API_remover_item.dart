@@ -2,14 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:todo_lovepeople/Model/Listagem%20de%20Tarefas/ListagemTarefa.dart';
+import 'package:todo_lovepeople/Utils/globals.dart' as globals;
 
 class DeleteItemRepository {
   Future<ListaTarefa?> deleteItem(int? id) async {
-    var uri = Uri.parse('https://todo-lovepeople.herokuapp.com/todos/{idTodo}');
+    var url = Uri.parse('https://todo-lovepeople.herokuapp.com/todos/{idTodo}');
     Map<String, String> header = {
-      HttpHeaders.authorizationHeader: "Bearer {token}",
+      HttpHeaders.authorizationHeader: "Bearer ${globals.token}",
     };
-    return http.delete(uri, headers: header).then((response) async {
+    return http.delete(url, headers: header).then((response) async {
       if (response.statusCode == 200) {
         var json = jsonDecode(response.body);
         return ListaTarefa.fromJson(json);
