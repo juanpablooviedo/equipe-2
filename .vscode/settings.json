@@ -1,0 +1,7 @@
+{
+    "diffEditor.codeLens": true,
+    "editor.minimap.side": "left",
+    "dart.flutterCreateOffline": true,
+    "notebook.outline.showCodeCells": true,
+    "bracketPairColorizer.showBracketsInGutter": true
+}
