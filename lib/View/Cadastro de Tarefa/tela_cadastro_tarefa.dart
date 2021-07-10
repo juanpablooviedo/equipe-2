@@ -246,7 +246,10 @@ class _CadastroTarefaState extends State<CadastroTarefa> {
                       onPressed: () {
                         print('ONPRESSED');
                         _clickButton(context);
+<<<<<<< HEAD
                         Navigator.pushReplacementNamed(context, 'listaTarefa');
+=======
+>>>>>>> 88ddc9b0f758434c3c61538c18a98f3965a9ff70
                       },
                     ),
                   ),
