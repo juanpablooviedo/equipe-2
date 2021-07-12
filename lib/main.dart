@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        initialRoute: "telaCadastroTarefa",
+        initialRoute: "login",
         routes: {
           "login": (context) => LoginPage(),
           "telaCadastro": (context) => RegisterUser(),
