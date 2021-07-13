@@ -1,6 +1,7 @@
-# todo_lovepeople
+# Todo_lovepeople
 
-A new Flutter project.
+É um aplicativo de lista de tarefas completo, tem uma tela de login, registro de usuário, registro de tarefas, lista de tarefas. Além de possuir todas as validações e consultas necessárias com API externa, etc. Pode criar listas de tarefas e guardar na nuvem individualmente para cada usuário registrado.
+Este aplicativo é o resultado de um projeto de estudo em grupo para o curso Flutter da Love People.
 
 ## Getting Started
 
